@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coal Smoke Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk icon-icon dashboard -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <!-- SIDEBAR UTAMA -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fa-solid fa-industry logo-icon"></i>
+                <div>
+                    <h2>COAL SMOKE</h2>
+                    <h1>MONITORING SYSTEM</h1>
+                    <p>Dual Redundant Monitoring Unit</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-gauge"></i> DASHBOARD</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-line"></i> LIVE CHART</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-database"></i> HISTORICAL DATA</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie"></i> DRIFT ANALYSIS</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i> ALERT LOG</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-sliders"></i> DEVICE CONTROL</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> SETTINGS</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-circle-info"></i> ABOUT SYSTEM</a>
+            </nav>
+
+            <div class="legend-box">
+                <h3>LEGEND</h3>
+                <div class="legend-item"><span class="dot normal"></span> Normal</div>
+                <div class="legend-item"><span class="dot warning"></span> Warning</div>
+                <div class="legend-item"><span class="dot error"></span> Error</div>
+                <div class="legend-item"><span class="dot offline"></span> Offline</div>
+            </div>
+
+            <div class="sidebar-footer">
+                <i class="fa-solid fa-gear text-warning"></i>
+                <div>
+                    <h3>TEKNIK INSTRUMENTASI</h3>
+                    <p>Your Future - Our Mission</p>
+                </div>
+            </div>
+
+            <div class="data-history-box">
+                <h3>DATA HISTORY</h3>
+                <label>Select Date</label>
+                <div class="date-picker-mock">31/05/2025 <i class="fa-regular fa-calendar"></i></div>
+                
+                <label style="margin-top: 10px; display: block;">Other Days</label>
+                <div class="history-list">
+                    <div class="history-item active">31 Mei 2025</div>
+                    <div class="history-item">30 Mei 2025</div>
+                    <div class="history-item">29 Mei 2025</div>
+                    <div class="history-item">28 Mei 2025</div>
+                    <div class="history-item">27 Mei 2025</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- KONTEN DASHBOARD UTAMA -->
+        <main class="main-content">
+            
+            <!-- TOP STATS BAR -->
+            <div class="top-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-label">HTTP STATUS</span>
+                        <span class="stat-value text-success">200 <span class="sub-val">OK</span></span>
+                        <span class="stat-sub">Last update: 10:30:25</span>
+                    </div>
+                    <i class="fa-solid fa-globe stat-icon"></i>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-label">GOOGLE SHEET</span>
+                        <span class="stat-value text-success">Connected <i class="fa-regular fa-circle-check"></i></span>
+                        <span class="stat-sub">Sheet ID: 1BxiMVs0XRA5n...</span>
+                    </div>
+                    <i class="fa-regular fa-file-excel stat-icon"></i>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-label">NETWORK STATUS</span>
+                        <span class="stat-value text-success">Online</span>
+                        <span class="stat-sub">Signal: -63 dBm | Strong</span>
+                    </div>
+                    <i class="fa-solid fa-wifi stat-icon"></i>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-label">SYSTEM STATUS</span>
+                        <span class="stat-value text-success">Operational</span>
+                        <span class="stat-sub">All systems normal</span>
+                    </div>
+                    <i class="fa-solid fa-gear stat-icon"></i>
+                </div>
+
+                <div class="stat-card time-card">
+                    <div class="text-right">
+                        <span class="stat-label">31 Mei 2025</span>
+                        <span class="time-value">10:30:25</span>
+                        <span class="stat-sub">WIB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL GABRIEL & GUAPO -->
+            <div class="units-grid">
+                <!-- GABRIEL PANEL -->
+                <div class="unit-panel">
+                    <div class="panel-header">
+                        <h2>GABRIEL 🦊</h2>
+                        <span class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Connected</span>
+                    </div>
+                    
+                    <div class="sensors-grid">
+                        <div class="sensor-box">
+                            <span class="sensor-name">DS18B20</span>
+                            <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
+                            <span class="sensor-val">30.4</span>
+                            <span class="sensor-unit">°C</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">DHT22</span>
+                            <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
+                            <span class="sensor-val">71.2</span>
+                            <span class="sensor-unit">% RH</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-2</span>
+                            <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
+                            <span class="sensor-val">128</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-4</span>
+                            <i class="fa-solid fa-fire sensor-icon text-warning"></i>
+                            <span class="sensor-val">45</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-7</span>
+                            <span class="sensor-gas">CO</span>
+                            <span class="sensor-val">312</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-135</span>
+                            <i class="fa-solid fa-smog sensor-icon text-warning"></i>
+                            <span class="sensor-val">276</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-136</span>
+                            <span class="sensor-gas">H₂S</span>
+                            <span class="sensor-val">18</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                    </div>
+
+                    <div class="drift-sub-panel">
+                        <div class="drift-main">
+                            <span class="drift-title">DRIFT (vs GUAPO)</span>
+                            <span class="drift-value text-warning">+1.23%</span>
+                            <span class="drift-sub">Average Drift</span>
+                        </div>
+                        <div class="drift-details">
+                            <span class="drift-title">PER-SENSOR DRIFT (%)</span>
+                            <div class="drift-table-mock">
+                                <div><span>+0.42</span><small>DS18B20</small></div>
+                                <div><span>+0.85</span><small>DHT22</small></div>
+                                <div><span class="text-success">-0.31</span><small>MQ-2</small></div>
+                                <div><span>+1.12</span><small>MQ-4</small></div>
+                                <div><span>+1.05</span><small>MQ-7</small></div>
+                                <div><span>+1.56</span><small>MQ-135</small></div>
+                                <div><span>+2.41</span><small>MQ-136</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GUAPO PANEL -->
+                <div class="unit-panel">
+                    <div class="panel-header">
+                        <h2>GUAPO 🦖</h2>
+                        <span class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Connected</span>
+                    </div>
+                    
+                    <div class="sensors-grid">
+                        <div class="sensor-box">
+                            <span class="sensor-name">DS18B20</span>
+                            <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
+                            <span class="sensor-val">30.2</span>
+                            <span class="sensor-unit">°C</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">DHT22</span>
+                            <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
+                            <span class="sensor-val">70.6</span>
+                            <span class="sensor-unit">% RH</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-2</span>
+                            <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
+                            <span class="sensor-val">127</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-4</span>
+                            <i class="fa-solid fa-fire sensor-icon text-warning"></i>
+                            <span class="sensor-val">44</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-7</span>
+                            <span class="sensor-gas">CO</span>
+                            <span class="sensor-val">309</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-135</span>
+                            <i class="fa-solid fa-smog sensor-icon text-warning"></i>
+                            <span class="sensor-val">272</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box">
+                            <span class="sensor-name">MQ-136</span>
+                            <span class="sensor-gas">H₂S</span>
+                            <span class="sensor-val">17</span>
+                            <span class="sensor-unit">ppm</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                    </div>
+
+                    <div class="drift-sub-panel">
+                        <div class="drift-main">
+                            <span class="drift-title">DRIFT (vs GABRIEL)</span>
+                            <span class="drift-value text-success">-1.23%</span>
+                            <span class="drift-sub">Average Drift</span>
+                        </div>
+                        <div class="drift-details">
+                            <span class="drift-title">PER-SENSOR DRIFT (%)</span>
+                            <div class="drift-table-mock">
+                                <div><span class="text-success">-0.42</span><small>DS18B20</small></div>
+                                <div><span class="text-success">-0.85</span><small>DHT22</small></div>
+                                <div><span>+0.31</span><small>MQ-2</small></div>
+                                <div><span class="text-success">-1.12</span><small>MQ-4</small></div>
+                                <div><span class="text-success">-1.05</span><small>MQ-7</small></div>
+                                <div><span class="text-success">-1.56</span><small>MQ-135</small></div>
+                                <div><span class="text-success">-2.41</span><small>MQ-136</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRID TENGAH: CHART, STATISTICS, ALERTS -->
+            <div class="middle-grid">
+                <!-- PANEL GRAFIK (MOCK) -->
+                <div class="grid-panel chart-panel">
+                    <div class="panel-subheader">
+                        <h3>LIVE COMPARISON (ALL SENSORS)</h3>
+                        <select class="mock-select"><option>MQ-7 (CO)</option></select>
+                    </div>
+                    <div class="mock-chart-container">
+                        <svg viewBox="0 0 500 200" class="svg-chart">
+                            <line x1="0" y1="40" x2="500" y2="40" stroke="#2a2e35" stroke-dasharray="4"/>
+                            <line x1="0" y1="80" x2="500" y2="80" stroke="#2a2e35" stroke-dasharray="4"/>
+                            <line x1="0" y1="120" x2="500" y2="120" stroke="#2a2e35" stroke-dasharray="4"/>
+                            <line x1="0" y1="160" x2="500" y2="160" stroke="#2a2e35" stroke-dasharray="4"/>
+                            <path d="M0,120 Q50,90 100,110 T200,80 T300,100 T400,90 T500,105" fill="none" stroke="#ffc107" stroke-width="2"/>
+                            <path d="M0,125 Q50,95 100,115 T200,85 T300,105 T400,95 T500,110" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="2"/>
+                        </svg>
+                        <div class="chart-timeline">
+                            <span>09:30</span><span>09:40</span><span>09:50</span><span>10:00</span><span>10:10</span><span>10:20</span><span>10:30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATISTIK -->
+                <div class="grid-panel">
+                    <h3>SYSTEM STATISTICS (TODAY)</h3>
+                    <div class="stats-list">
+                        <div class="stat-row"><i class="fa-regular fa-clock"></i> <span>Runtime (Gabriel)</span> <strong>8h 35m 22s</strong></div>
+                        <div class="stat-row"><i class="fa-regular fa-clock"></i> <span>Runtime (Guapo)</span> <strong>8h 35m 18s</strong></div>
+                        <div class="stat-line"></div>
+                        <div class="stat-row"><i class="fa-solid fa-chart-simple"></i> <span>Data Points (Gabriel)</span> <strong>12,458</strong></div>
+                        <div class="stat-row"><i class="fa-solid fa-chart-simple"></i> <span>Data Points (Guapo)</span> <strong>12,463</strong></div>
+                        <div class="stat-line"></div>
+                        <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Avg Drift (Overall)</span> <strong class="text-warning">1.23 %</strong></div>
+                        <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Max Drift (Overall)</span> <strong class="text-warning">3.42 %</strong></div>
+                    </div>
+                </div>
+
+                <!-- ALERTS SUMMARY -->
+                <div class="grid-panel">
+                    <h3>ALERT SUMMARY</h3>
+                    <div class="alerts-list">
+                        <div class="alert-item alert-success">
+                            <i class="fa-regular fa-circle-check"></i>
+                            <div><strong>No Critical Alerts</strong></div>
+                        </div>
+                        <div class="alert-item alert-warning">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <div><strong>2 Warning</strong><small>MQ-136 Drift > 2% (Guapo)</small></div>
+                        </div>
+                        <div class="alert-item alert-info">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <div><strong>0 Info</strong><small>All systems normal</small></div>
+                        </div>
+                        <div class="alert-item alert-danger">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            <div><strong>0 Error</strong><small>All systems normal</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DATA TABLE BAWAH -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>DATA TABLE – 31 MEI 2025</h3>
+                    <div class="table-actions">
+                        <button class="btn btn-yellow"><i class="fa-solid fa-download"></i> DOWNLOAD CSV</button>
+                        <button class="btn btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i> OPEN SHEET</button>
+                        <button class="btn btn-outline"><i class="fa-solid fa-rotate"></i> REFRESH</button>
+                    </div>
+                </div>
+                
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">WAKTU</th>
+                                <th colspan="7" class="text-center bg-gabriel">GABRIEL 🦊</th>
+                                <th colspan="7" class="text-center bg-guapo">GUAPO 🦖</th>
+                                <th rowspan="2">AVG DRIFT (%)</th>
+                            </tr>
+                            <tr>
+                                <th>DS18B20<br><small>(°C)</small></th>
+                                <th>DHT22<br><small>(%RH)</small></th>
+                                <th>MQ-2<br><small>(ppm)</small></th>
+                                <th>MQ-4<br><small>(ppm)</small></th>
+                                <th>MQ-7<br><small>(ppm)</small></th>
+                                <th>MQ-135<br><small>(ppm)</small></th>
+                                <th>MQ-136<br><small>(ppm)</small></th>
+                                
+                                <th>DS18B20<br><small>(°C)</small></th>
+                                <th>DHT22<br><small>(%RH)</small></th>
+                                <th>MQ-2<br><small>(ppm)</small></th>
+                                <th>MQ-4<br><small>(ppm)</small></th>
+                                <th>MQ-7<br><small>(ppm)</small></th>
+                                <th>MQ-135<br><small>(ppm)</small></th>
+                                <th>MQ-136<br><small>(ppm)</small></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10:30:00</td><td>30.4</td><td>71.2</td><td>128</td><td>45</td><td>312</td><td>276</td><td class="text-warning">18</td>
+                                <td>30.2</td><td>70.6</td><td>127</td><td>44</td><td>309</td><td>272</td><td>17</td><td>1.23</td>
+                            </tr>
+                            <tr>
+                                <td>10:29:00</td><td>30.3</td><td>71.1</td><td>129</td><td>46</td><td>315</td><td>278</td><td class="text-warning">18</td>
+                                <td>30.1</td><td>70.5</td><td>126</td><td>45</td><td>310</td><td>273</td><td>17</td><td>1.28</td>
+                            </tr>
+                            <tr>
+                                <td>10:28:00</td><td>30.5</td><td>71.3</td><td>130</td><td>46</td><td class="text-success">317</td><td>280</td><td class="text-warning">19</td>
+                                <td>30.3</td><td>70.7</td><td>128</td><td>45</td><td>312</td><td>274</td><td>18</td><td>1.16</td>
+                            </tr>
+                            <tr>
+                                <td>10:27:00</td><td>30.6</td><td>71.4</td><td>131</td><td>47</td><td>318</td><td>281</td><td class="text-warning">19</td>
+                                <td>30.4</td><td>70.8</td><td>129</td><td>46</td><td>314</td><td>276</td><td>18</td><td>1.14</td>
+                            </tr>
+                            <tr>
+                                <td>10:26:00</td><td>30.4</td><td>71.0</td><td>128</td><td>45</td><td>313</td><td>276</td><td class="text-warning">18</td>
+                                <td>30.2</td><td>70.4</td><td>127</td><td>44</td><td>310</td><td>272</td><td>17</td><td>1.29</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+                <span>© 2025 Coal Smoke Monitoring System</span>
+                <span>Gabriel 🦊 & Guapo 🦖 – Dual Redundant Monitoring Unit</span>
+                <span>Built with <i class="fa-solid fa-heart text-danger"></i> by Instrumentation Engineering</span>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
