@@ -6,10 +6,12 @@
 }
 
 body {
-    /* Setup background semi transparan yang melapisi wallpaper kamu */
-    background: linear-gradient(rgba(10, 12, 16, 0.92), rgba(10, 12, 16, 0.95)), 
-                url('wallpaper/wallpaper.jpg') no-repeat center center fixed;
+    background-image: url("wallpaper/wallpaper.jpg");
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     color: #e1e4e8;
     min-height: 100vh;
     overflow-x: hidden;
