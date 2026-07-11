@@ -635,3 +635,59 @@ tbody tr:hover {
     padding-top: 15px;
     margin-top: 10px;
 }
+
+/* --- Tambahan Fitur Baru --- */
+
+/* Widget Checklist Box di Sidebar */
+.widget-control-box {
+    background-color: rgba(28, 33, 40, 0.6);
+    border: 1px solid #252a33;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.widget-control-box h3 {
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.checklist-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #c9d1d9;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #ffc107; /* Warna centang matching kuning */
+}
+
+/* Class Utility untuk Menyembunyikan Fitur */
+.hidden-feature {
+    display: none !important;
+}
+
+/* Modifikasi Layout Middle Grid karena Alert Dihapus */
+.middle-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Diubah dari 3 kolom jadi 2 kolom */
+    gap: 20px;
+}
+
+/* Pembatas Tinggi Agar Sheet/Tabel Bisa di-Scroll Vertical & Horizontal */
+.main-sheet-scroll {
+    max-height: 350px; /* Batas tinggi box tabel */
+    overflow-y: auto;  /* Scroll vertical otomatis muncul jika data melimpah */
+    overflow-x: auto;  /* Scroll horizontal jika kolomnya terlalu lebar */
+}

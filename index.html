@@ -22,6 +22,29 @@
                 </div>
             </div>
 
+            <!-- WIDGET CHECKLIST (KONTROL TAMPILAN) -->
+            <div class="widget-control-box">
+                <h3>KONTROL TAMPILAN</h3>
+                <div class="checklist-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="toggle-top-stats" checked>
+                        <span>Top Status Bar</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="toggle-panels" checked>
+                        <span>Panel Gabriel & Guapo</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="toggle-middle" checked>
+                        <span>Grafik & Statistika</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="toggle-sheet" checked>
+                        <span>Data Google Sheet</span>
+                    </label>
+                </div>
+            </div>
+
             <nav class="nav-menu">
                 <a href="#" class="nav-item active"><i class="fa-solid fa-gauge"></i> DASHBOARD</a>
                 <a href="#" class="nav-item"><i class="fa-solid fa-chart-line"></i> LIVE CHART</a>
@@ -32,22 +55,6 @@
                 <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> SETTINGS</a>
                 <a href="#" class="nav-item"><i class="fa-solid fa-circle-info"></i> ABOUT SYSTEM</a>
             </nav>
-
-            <div class="legend-box">
-                <h3>LEGEND</h3>
-                <div class="legend-item"><span class="dot normal"></span> Normal</div>
-                <div class="legend-item"><span class="dot warning"></span> Warning</div>
-                <div class="legend-item"><span class="dot error"></span> Error</div>
-                <div class="legend-item"><span class="dot offline"></span> Offline</div>
-            </div>
-
-            <div class="sidebar-footer">
-                <i class="fa-solid fa-gear text-warning"></i>
-                <div>
-                    <h3>TEKNIK INSTRUMENTASI</h3>
-                    <p>Your Future - Our Mission</p>
-                </div>
-            </div>
 
             <div class="data-history-box">
                 <h3>DATA HISTORY</h3>
@@ -69,7 +76,7 @@
         <main class="main-content">
             
             <!-- TOP STATS BAR -->
-            <div class="top-stats-grid">
+            <div id="section-top-stats" class="top-stats-grid">
                 <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-label">HTTP STATUS</span>
@@ -116,7 +123,7 @@
             </div>
 
             <!-- PANEL GABRIEL & GUAPO -->
-            <div class="units-grid">
+            <div id="section-panels" class="units-grid">
                 <!-- GABRIEL PANEL -->
                 <div class="unit-panel">
                     <div class="panel-header">
@@ -278,8 +285,8 @@
                 </div>
             </div>
 
-            <!-- GRID TENGAH: CHART, STATISTICS, ALERTS -->
-            <div class="middle-grid">
+            <!-- GRID TENGAH: CHART & STATISTICS -->
+            <div id="section-middle" class="middle-grid">
                 <!-- PANEL GRAFIK (MOCK) -->
                 <div class="grid-panel chart-panel">
                     <div class="panel-subheader">
@@ -302,7 +309,7 @@
                 </div>
 
                 <!-- STATISTIK -->
-                <div class="grid-panel">
+                <div class="grid-panel layout-stats-wide">
                     <h3>SYSTEM STATISTICS (TODAY)</h3>
                     <div class="stats-list">
                         <div class="stat-row"><i class="fa-regular fa-clock"></i> <span>Runtime (Gabriel)</span> <strong>8h 35m 22s</strong></div>
@@ -315,33 +322,10 @@
                         <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Max Drift (Overall)</span> <strong class="text-warning">3.42 %</strong></div>
                     </div>
                 </div>
-
-                <!-- ALERTS SUMMARY -->
-                <div class="grid-panel">
-                    <h3>ALERT SUMMARY</h3>
-                    <div class="alerts-list">
-                        <div class="alert-item alert-success">
-                            <i class="fa-regular fa-circle-check"></i>
-                            <div><strong>No Critical Alerts</strong></div>
-                        </div>
-                        <div class="alert-item alert-warning">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <div><strong>2 Warning</strong><small>MQ-136 Drift > 2% (Guapo)</small></div>
-                        </div>
-                        <div class="alert-item alert-info">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <div><strong>0 Info</strong><small>All systems normal</small></div>
-                        </div>
-                        <div class="alert-item alert-danger">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                            <div><strong>0 Error</strong><small>All systems normal</small></div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- DATA TABLE BAWAH -->
-            <div class="table-container">
+            <!-- DATA TABLE BAWAH (SCROLLABLE CONTAINER) -->
+            <div id="section-sheet" class="table-container">
                 <div class="table-header">
                     <h3>DATA TABLE – 31 MEI 2025</h3>
                     <div class="table-actions">
@@ -351,13 +335,14 @@
                     </div>
                 </div>
                 
-                <div class="table-scroll">
+                <!-- Disini dibatasi tingginya biar bisa scroll vertical & horizontal jika banyak -->
+                <div class="table-scroll main-sheet-scroll">
                     <table>
                         <thead>
                             <tr>
                                 <th rowspan="2">WAKTU</th>
                                 <th colspan="7" class="text-center bg-gabriel">GABRIEL 🦊</th>
-                                <th colspan="7" class="text-center bg-guapo">GUAPO 🦖</th>
+                                <th colspan="7" class="text-center bg-guapo">GUAPO 🐊</th>
                                 <th rowspan="2">AVG DRIFT (%)</th>
                             </tr>
                             <tr>
@@ -408,11 +393,32 @@
             <footer class="main-footer">
                 <span>© 2025 Coal Smoke Monitoring System</span>
                 <span>Gabriel 🦊 & Guapo 🐊 – Dual Redundant Monitoring Unit</span>
-                <span>Built with <i class="fa-solid fa-heart text-danger"></i> by Instrumentation Engineering</span>
             </footer>
 
         </main>
     </div>
 
+    <!-- LOGIC JAVASCRIPT UNTUK CHECKLIST WIDGET -->
+    <script>
+        const bindToggle = (checkboxId, sectionId) => {
+            const cb = document.getElementById(checkboxId);
+            const el = document.getElementById(sectionId);
+            if(cb && el) {
+                cb.addEventListener('change', function() {
+                    if (this.checked) {
+                        el.classList.remove('hidden-feature');
+                    } else {
+                        el.classList.add('hidden-feature');
+                    }
+                });
+            }
+        };
+
+        // Pasangkan Event Listener
+        bindToggle('toggle-top-stats', 'section-top-stats');
+        bindToggle('toggle-panels', 'section-panels');
+        bindToggle('toggle-middle', 'section-middle');
+        bindToggle('toggle-sheet', 'section-sheet');
+    </script>
 </body>
 </html>
