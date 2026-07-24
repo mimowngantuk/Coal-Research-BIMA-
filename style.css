@@ -63,136 +63,6 @@ body {
     color: #6e7681;
 }
 
-.nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    color: #8b949e;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: all 0.2s;
-}
-
-.nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-}
-
-.nav-item.active {
-    background-color: #ffc107;
-    color: #000000;
-}
-
-.legend-box {
-    background-color: rgba(28, 33, 40, 0.6);
-    border: 1px solid #252a33;
-    border-radius: 6px;
-    padding: 12px;
-}
-
-.legend-box h3, .data-history-box h3 {
-    font-size: 0.75rem;
-    color: #8b949e;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.75rem;
-    margin-bottom: 6px;
-    color: #c9d1d9;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-}
-.dot.normal { background-color: #2ea44f; }
-.dot.warning { background-color: #ffc107; }
-.dot.error { background-color: #f85149; }
-.dot.offline { background-color: #6e7681; }
-
-.sidebar-footer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: rgba(28, 33, 40, 0.8);
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #252a33;
-}
-
-.sidebar-footer h3 {
-    font-size: 0.7rem;
-    color: #ffc107;
-}
-
-.sidebar-footer p {
-    font-size: 0.6rem;
-    color: #8b949e;
-}
-
-.data-history-box {
-    background-color: rgba(28, 33, 40, 0.6);
-    border: 1px solid #252a33;
-    border-radius: 6px;
-    padding: 12px;
-    margin-top: auto;
-}
-
-.data-history-box label {
-    font-size: 0.65rem;
-    color: #6e7681;
-}
-
-.date-picker-mock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #12161c;
-    border: 1px solid #252a33;
-    padding: 6px 10px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    margin-top: 4px;
-    color: #ffffff;
-}
-
-.history-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-top: 6px;
-}
-
-.history-item {
-    font-size: 0.7rem;
-    padding: 6px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #8b949e;
-}
-
-.history-item.active {
-    background-color: #ffc107;
-    color: #000000;
-    font-weight: 600;
-}
-
 /* MAIN CONTENT STYLING */
 .main-content {
     padding: 20px;
@@ -274,6 +144,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    transition: all 0.3s ease;
 }
 
 .unit-panel {
@@ -409,10 +280,10 @@ body {
     margin-top: 2px;
 }
 
-/* MIDDLE GRID (CHART, STATS, ALERT) */
+/* MIDDLE GRID (CHART & STATS) */
 .middle-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 20px;
 }
 
@@ -499,39 +370,6 @@ body {
     background-color: #21262d;
     margin: 2px 0;
 }
-
-.alerts-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.alert-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-}
-
-.alert-item i {
-    font-size: 1rem;
-    margin-top: 2px;
-}
-
-.alert-item small {
-    display: block;
-    color: #8b949e;
-    font-size: 0.65rem;
-    margin-top: 2px;
-}
-
-.alert-success { background-color: rgba(46, 164, 79, 0.15); border: 1px solid rgba(46, 164, 79, 0.3); color: #58a6ff; }
-.alert-success i { color: #2ea44f; }
-.alert-warning { background-color: rgba(212, 167, 44, 0.15); border: 1px solid rgba(212, 167, 44, 0.3); color: #ffc107; }
-.alert-info { background-color: rgba(56, 139, 253, 0.15); border: 1px solid rgba(56, 139, 253, 0.3); color: #58a6ff; }
-.alert-danger { background-color: rgba(248, 81, 73, 0.15); border: 1px solid rgba(248, 81, 73, 0.3); color: #f85149; }
 
 /* LOWER DATA TABLE STYLING */
 .table-container {
@@ -636,8 +474,6 @@ tbody tr:hover {
     margin-top: 10px;
 }
 
-/* --- Tambahan Fitur Baru --- */
-
 /* Widget Checklist Box di Sidebar */
 .widget-control-box {
     background-color: rgba(28, 33, 40, 0.6);
@@ -670,24 +506,16 @@ tbody tr:hover {
 
 .checkbox-label input[type="checkbox"] {
     cursor: pointer;
-    accent-color: #ffc107; /* Warna centang matching kuning */
+    accent-color: #ffc107;
 }
 
-/* Class Utility untuk Menyembunyikan Fitur */
+/* Utility Class untuk Sembunyi */
 .hidden-feature {
     display: none !important;
 }
 
-/* Modifikasi Layout Middle Grid karena Alert Dihapus */
-.middle-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Diubah dari 3 kolom jadi 2 kolom */
-    gap: 20px;
-}
-
-/* Pembatas Tinggi Agar Sheet/Tabel Bisa di-Scroll Vertical & Horizontal */
 .main-sheet-scroll {
-    max-height: 350px; /* Batas tinggi box tabel */
-    overflow-y: auto;  /* Scroll vertical otomatis muncul jika data melimpah */
-    overflow-x: auto;  /* Scroll horizontal jika kolomnya terlalu lebar */
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: auto;
 }
