@@ -32,11 +32,11 @@
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-gabriel" checked>
-                        <span>Gabriel (Filter Box)</span>
+                        <span>Gabriel Panel</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-guapo" checked>
-                        <span>Guapo (Sensor Chamber)</span>
+                        <span>Guapo Panel</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-middle" checked>
@@ -102,65 +102,83 @@
 
             <!-- PANEL GABRIEL & GUAPO -->
             <div id="section-panels" class="units-grid">
+                
                 <!-- GABRIEL PANEL -->
                 <div id="panel-gabriel" class="unit-panel">
                     <div class="panel-header">
-                        <h2>GABRIEL 🦊 <small style="font-size: 0.75rem; color: #8b949e;">(Filter Box)</small></h2>
+                        <h2>GABRIEL 🦊</h2>
                         <span id="gabriel-status" class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Connected</span>
                     </div>
                     
-                    <div class="sensors-grid">
-                        <div class="sensor-box">
-                            <span class="sensor-name">DS18B20</span>
-                            <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
-                            <span id="gabriel-ds18b20" class="sensor-val">--</span>
-                            <span class="sensor-unit">°C</span>
-                            <span class="sensor-status text-success">Normal</span>
+                    <div class="sensor-groups-wrapper">
+                        <!-- KELOMPOK 1: MQ SENSORS -->
+                        <div class="sensor-group-box">
+                            <div class="group-title"><i class="fa-solid fa-wind"></i> SENSOR GAS (MQ SERIES)</div>
+                            <div class="sensors-grid mq-grid">
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-2</span>
+                                    <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
+                                    <span id="gabriel-mq2" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-4</span>
+                                    <i class="fa-solid fa-fire sensor-icon text-warning"></i>
+                                    <span id="gabriel-mq4" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-7</span>
+                                    <span class="sensor-gas">CO</span>
+                                    <span id="gabriel-mq7" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-135</span>
+                                    <i class="fa-solid fa-smog sensor-icon text-warning"></i>
+                                    <span id="gabriel-mq135" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-136</span>
+                                    <span class="sensor-gas">H₂S</span>
+                                    <span id="gabriel-mq136" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">DHT22</span>
-                            <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
-                            <span id="gabriel-dht22" class="sensor-val">--</span>
-                            <span class="sensor-unit">% RH</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-2</span>
-                            <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
-                            <span id="gabriel-mq2" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-4</span>
-                            <i class="fa-solid fa-fire sensor-icon text-warning"></i>
-                            <span id="gabriel-mq4" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-7</span>
-                            <span class="sensor-gas">CO</span>
-                            <span id="gabriel-mq7" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-135</span>
-                            <i class="fa-solid fa-smog sensor-icon text-warning"></i>
-                            <span id="gabriel-mq135" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-136</span>
-                            <span class="sensor-gas">H₂S</span>
-                            <span id="gabriel-mq136" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
+
+                        <!-- KELOMPOK 2: SUHU & KELEMBAPAN (DENGAN LABEL FILTER BOX) -->
+                        <div class="sensor-group-box">
+                            <div class="group-title">
+                                <i class="fa-solid fa-temperature-high"></i> SENSOR SUHU & KELEMBAPAN 
+                                <small style="font-size: 0.7rem; color: #8b949e; margin-left: 6px; text-transform: none;">(Filter Box)</small>
+                            </div>
+                            <div class="sensors-grid temp-grid">
+                                <div class="sensor-box">
+                                    <span class="sensor-name">DHT22</span>
+                                    <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
+                                    <span id="gabriel-dht22" class="sensor-val">--</span>
+                                    <span class="sensor-unit">% RH</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">DS18B20</span>
+                                    <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
+                                    <span id="gabriel-ds18b20" class="sensor-val">--</span>
+                                    <span class="sensor-unit">°C</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- DRIFT SUB-PANEL -->
                     <div class="drift-sub-panel">
                         <div class="drift-main">
                             <span class="drift-title">DRIFT (vs GUAPO)</span>
@@ -170,13 +188,13 @@
                         <div class="drift-details">
                             <span class="drift-title">PER-SENSOR DRIFT (%)</span>
                             <div class="drift-table-mock">
-                                <div><span id="drift-gabriel-ds18b20">--</span><small>DS18B20</small></div>
-                                <div><span id="drift-gabriel-dht22">--</span><small>DHT22</small></div>
                                 <div><span id="drift-gabriel-mq2">--</span><small>MQ-2</small></div>
                                 <div><span id="drift-gabriel-mq4">--</span><small>MQ-4</small></div>
                                 <div><span id="drift-gabriel-mq7">--</span><small>MQ-7</small></div>
                                 <div><span id="drift-gabriel-mq135">--</span><small>MQ-135</small></div>
                                 <div><span id="drift-gabriel-mq136">--</span><small>MQ-136</small></div>
+                                <div><span id="drift-gabriel-dht22">--</span><small>DHT22</small></div>
+                                <div><span id="drift-gabriel-ds18b20">--</span><small>DS18B20</small></div>
                             </div>
                         </div>
                     </div>
@@ -185,62 +203,79 @@
                 <!-- GUAPO PANEL -->
                 <div id="panel-guapo" class="unit-panel">
                     <div class="panel-header">
-                        <h2>GUAPO 🐊 <small style="font-size: 0.75rem; color: #8b949e;">(Sensor Chamber)</small></h2>
+                        <h2>GUAPO 🐊</h2>
                         <span id="guapo-status" class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Connected</span>
                     </div>
                     
-                    <div class="sensors-grid">
-                        <div class="sensor-box">
-                            <span class="sensor-name">DS18B20</span>
-                            <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
-                            <span id="guapo-ds18b20" class="sensor-val">--</span>
-                            <span class="sensor-unit">°C</span>
-                            <span class="sensor-status text-success">Normal</span>
+                    <div class="sensor-groups-wrapper">
+                        <!-- KELOMPOK 1: MQ SENSORS -->
+                        <div class="sensor-group-box">
+                            <div class="group-title"><i class="fa-solid fa-wind"></i> SENSOR GAS (MQ SERIES)</div>
+                            <div class="sensors-grid mq-grid">
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-2</span>
+                                    <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
+                                    <span id="guapo-mq2" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-4</span>
+                                    <i class="fa-solid fa-fire sensor-icon text-warning"></i>
+                                    <span id="guapo-mq4" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-7</span>
+                                    <span class="sensor-gas">CO</span>
+                                    <span id="guapo-mq7" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-135</span>
+                                    <i class="fa-solid fa-smog sensor-icon text-warning"></i>
+                                    <span id="guapo-mq135" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">MQ-136</span>
+                                    <span class="sensor-gas">H₂S</span>
+                                    <span id="guapo-mq136" class="sensor-val">--</span>
+                                    <span class="sensor-unit">ppm</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">DHT22</span>
-                            <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
-                            <span id="guapo-dht22" class="sensor-val">--</span>
-                            <span class="sensor-unit">% RH</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-2</span>
-                            <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
-                            <span id="guapo-mq2" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-4</span>
-                            <i class="fa-solid fa-fire sensor-icon text-warning"></i>
-                            <span id="guapo-mq4" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-7</span>
-                            <span class="sensor-gas">CO</span>
-                            <span id="guapo-mq7" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-135</span>
-                            <i class="fa-solid fa-smog sensor-icon text-warning"></i>
-                            <span id="guapo-mq135" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
-                        </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">MQ-136</span>
-                            <span class="sensor-gas">H₂S</span>
-                            <span id="guapo-mq136" class="sensor-val">--</span>
-                            <span class="sensor-unit">ppm</span>
-                            <span class="sensor-status text-success">Normal</span>
+
+                        <!-- KELOMPOK 2: SUHU & KELEMBAPAN (DENGAN LABEL SENSOR CHAMBER) -->
+                        <div class="sensor-group-box">
+                            <div class="group-title">
+                                <i class="fa-solid fa-temperature-high"></i> SENSOR SUHU & KELEMBAPAN 
+                                <small style="font-size: 0.7rem; color: #8b949e; margin-left: 6px; text-transform: none;">(Sensor Chamber)</small>
+                            </div>
+                            <div class="sensors-grid temp-grid">
+                                <div class="sensor-box">
+                                    <span class="sensor-name">DHT22</span>
+                                    <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
+                                    <span id="guapo-dht22" class="sensor-val">--</span>
+                                    <span class="sensor-unit">% RH</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                                <div class="sensor-box">
+                                    <span class="sensor-name">DS18B20</span>
+                                    <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
+                                    <span id="guapo-ds18b20" class="sensor-val">--</span>
+                                    <span class="sensor-unit">°C</span>
+                                    <span class="sensor-status text-success">Normal</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- DRIFT SUB-PANEL -->
                     <div class="drift-sub-panel">
                         <div class="drift-main">
                             <span class="drift-title">DRIFT (vs GABRIEL)</span>
@@ -250,17 +285,18 @@
                         <div class="drift-details">
                             <span class="drift-title">PER-SENSOR DRIFT (%)</span>
                             <div class="drift-table-mock">
-                                <div><span id="drift-guapo-ds18b20">--</span><small>DS18B20</small></div>
-                                <div><span id="drift-guapo-dht22">--</span><small>DHT22</small></div>
                                 <div><span id="drift-guapo-mq2">--</span><small>MQ-2</small></div>
                                 <div><span id="drift-guapo-mq4">--</span><small>MQ-4</small></div>
                                 <div><span id="drift-guapo-mq7">--</span><small>MQ-7</small></div>
                                 <div><span id="drift-guapo-mq135">--</span><small>MQ-135</small></div>
                                 <div><span id="drift-guapo-mq136">--</span><small>MQ-136</small></div>
+                                <div><span id="drift-guapo-dht22">--</span><small>DHT22</small></div>
+                                <div><span id="drift-guapo-ds18b20">--</span><small>DS18B20</small></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- GRID TENGAH: CHART & STATISTICS -->
@@ -323,8 +359,8 @@
                         <thead>
                             <tr>
                                 <th rowspan="2">WAKTU</th>
-                                <th colspan="7" class="text-center bg-gabriel">GABRIEL 🦊 (Filter Box)</th>
-                                <th colspan="7" class="text-center bg-guapo">GUAPO 🐊 (Sensor Chamber)</th>
+                                <th colspan="7" class="text-center bg-gabriel">GABRIEL 🦊</th>
+                                <th colspan="7" class="text-center bg-guapo">GUAPO 🐊</th>
                                 <th rowspan="2">AVG DRIFT (%)</th>
                             </tr>
                             <tr>
@@ -428,7 +464,6 @@
 
                 const resData = await response.json();
                 
-                // Mendukung jika response dikemas dalam { data: [...] } atau array langsung [...]
                 const rows = Array.isArray(resData) ? resData : (resData.data || []);
                 if (!rows || rows.length === 0) return;
 
@@ -440,7 +475,6 @@
                 document.getElementById('stat-sheet').className = 'stat-value text-success';
                 document.getElementById('stat-last-update').innerText = new Date().toLocaleTimeString('id-ID');
 
-                // Data paling baru (baris paling akhir / paling atas tergantung balikannya)
                 const latest = rows[rows.length - 1];
                 updatePanelValues(latest);
                 renderTable(rows);
@@ -458,7 +492,6 @@
 
         // Mapping Data dari Apps Script ke Elemen UI
         function updatePanelValues(row) {
-            // Helper pembersih angka
             const val = (v) => v !== undefined && v !== null && !isNaN(v) ? parseFloat(v) : 0;
 
             const gabriel = {
@@ -528,7 +561,6 @@
             formatDriftText('drift-gabriel-mq135', drifts.mq135);
             formatDriftText('drift-gabriel-mq136', drifts.mq136);
 
-            // Inverse drift untuk Guapo
             formatDriftText('drift-guapo-ds18b20', -drifts.ds18b20);
             formatDriftText('drift-guapo-dht22', -drifts.dht22);
             formatDriftText('drift-guapo-mq2', -drifts.mq2);
@@ -537,7 +569,6 @@
             formatDriftText('drift-guapo-mq135', -drifts.mq135);
             formatDriftText('drift-guapo-mq136', -drifts.mq136);
 
-            // Rata-rata Drift
             const driftArr = Object.values(drifts);
             const avgDrift = driftArr.reduce((a, b) => a + b, 0) / driftArr.length;
             formatDriftText('gabriel-avg-drift', avgDrift);
@@ -549,7 +580,6 @@
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
 
-            // Ambil 10 data paling baru
             const displayRows = rows.slice().reverse().slice(0, 15);
 
             displayRows.forEach(row => {
@@ -589,7 +619,7 @@
             if (rows.length < 2) return;
 
             const selectedSensor = document.getElementById('sensor-selector').value;
-            const recent = rows.slice(-10); // 10 data terakhir
+            const recent = rows.slice(-10);
 
             const keyGabriel = 'gabriel_' + selectedSensor;
             const keyGuapo = 'guapo_' + selectedSensor;
@@ -614,7 +644,6 @@
             document.getElementById('chart-path-gabriel').setAttribute('d', buildPath(gabrielVals));
             document.getElementById('chart-path-guapo').setAttribute('d', buildPath(guapoVals));
 
-            // Update Timeline Text
             const timelineBox = document.getElementById('chart-timeline');
             timelineBox.innerHTML = '';
             recent.filter((_, i) => i % 2 === 0).forEach(r => {
@@ -633,7 +662,6 @@
         document.getElementById('sensor-selector').addEventListener('change', () => renderChart(historicalData));
         document.getElementById('btn-refresh').addEventListener('click', fetchSensorData);
 
-        // Fetch otomatis setiap 5 detik
         fetchSensorData();
         setInterval(fetchSensorData, 5000);
     </script>

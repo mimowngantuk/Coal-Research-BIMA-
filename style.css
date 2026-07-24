@@ -11,7 +11,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     color: #e1e4e8;
     min-height: 100vh;
     overflow-x: hidden;
@@ -173,11 +172,48 @@ body {
     font-weight: 600;
 }
 
+/* SUB-PANEL KELOMPOK SENSOR */
+.sensor-groups-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.sensor-group-box {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.group-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #8b949e;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.group-title i {
+    color: #ffc107;
+    margin-right: 6px;
+}
+
 .sensors-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
     gap: 8px;
-    margin-bottom: 15px;
+}
+
+.mq-grid {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.temp-grid {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .sensor-box {
