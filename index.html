@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coal Smoke Monitoring System</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome untuk icon-icon dashboard -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div class="dashboard-wrapper">
-        <!-- SIDEBAR UTAMA -->
+        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="logo-area">
                 <i class="fa-solid fa-industry logo-icon"></i>
@@ -22,7 +21,7 @@
                 </div>
             </div>
 
-            <!-- WIDGET CHECKLIST (KONTROL TAMPILAN) -->
+            <!-- KONTROL TAMPILAN TERBARU -->
             <div class="widget-control-box">
                 <h3>KONTROL TAMPILAN</h3>
                 <div class="checklist-group">
@@ -38,6 +37,11 @@
                         <input type="checkbox" id="toggle-guapo" checked>
                         <span>Guapo (Sensor Chamber)</span>
                     </label>
+                    <!-- PILIHAN KONTROL BARU TERPISAH -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="toggle-ds-dht" checked>
+                        <span>DS18B20 & DHT22</span>
+                    </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-middle" checked>
                         <span>Grafik & Statistika</span>
@@ -50,7 +54,7 @@
             </div>
         </aside>
 
-        <!-- KONTEN DASHBOARD UTAMA -->
+        <!-- KONTEN UTAMA -->
         <main class="main-content">
             
             <!-- TOP STATS BAR -->
@@ -102,6 +106,7 @@
 
             <!-- PANEL GABRIEL & GUAPO -->
             <div id="section-panels" class="units-grid">
+                
                 <!-- GABRIEL PANEL -->
                 <div id="panel-gabriel" class="unit-panel">
                     <div class="panel-header">
@@ -110,20 +115,30 @@
                     </div>
                     
                     <div class="sensors-grid">
-                        <div class="sensor-box">
+                        <!-- BOX KONTROL TERPISAH: DS18B20 & DHT22 -->
+                        <div class="sensor-box ds-dht-group">
                             <span class="sensor-name">DS18B20</span>
                             <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
-                            <span id="gabriel-ds18b20" class="sensor-val">--</span>
+                            <span id="gabriel-ds18" class="sensor-val">--</span>
                             <span class="sensor-unit">°C</span>
                             <span class="sensor-status text-success">Normal</span>
                         </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">DHT22</span>
+                        <div class="sensor-box ds-dht-group">
+                            <span class="sensor-name">DHT22 (Suhu)</span>
+                            <i class="fa-solid fa-temperature-arrow-up sensor-icon text-warning"></i>
+                            <span id="gabriel-dht-temp" class="sensor-val">--</span>
+                            <span class="sensor-unit">°C</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box ds-dht-group">
+                            <span class="sensor-name">DHT22 (Hum)</span>
                             <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
-                            <span id="gabriel-dht22" class="sensor-val">--</span>
+                            <span id="gabriel-dht-hum" class="sensor-val">--</span>
                             <span class="sensor-unit">% RH</span>
                             <span class="sensor-status text-success">Normal</span>
                         </div>
+                        
+                        <!-- MQ SENSORS -->
                         <div class="sensor-box">
                             <span class="sensor-name">MQ-2</span>
                             <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
@@ -170,8 +185,9 @@
                         <div class="drift-details">
                             <span class="drift-title">PER-SENSOR DRIFT (%)</span>
                             <div class="drift-table-mock">
-                                <div><span id="drift-gabriel-ds18b20">--</span><small>DS18B20</small></div>
-                                <div><span id="drift-gabriel-dht22">--</span><small>DHT22</small></div>
+                                <div class="ds-dht-group"><span id="drift-gabriel-ds18">--</span><small>DS18</small></div>
+                                <div class="ds-dht-group"><span id="drift-gabriel-dht-temp">--</span><small>DHT Temp</small></div>
+                                <div class="ds-dht-group"><span id="drift-gabriel-dht-hum">--</span><small>DHT Hum</small></div>
                                 <div><span id="drift-gabriel-mq2">--</span><small>MQ-2</small></div>
                                 <div><span id="drift-gabriel-mq4">--</span><small>MQ-4</small></div>
                                 <div><span id="drift-gabriel-mq7">--</span><small>MQ-7</small></div>
@@ -190,20 +206,30 @@
                     </div>
                     
                     <div class="sensors-grid">
-                        <div class="sensor-box">
+                        <!-- BOX KONTROL TERPISAH: DS18B20 & DHT22 -->
+                        <div class="sensor-box ds-dht-group">
                             <span class="sensor-name">DS18B20</span>
                             <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
-                            <span id="guapo-ds18b20" class="sensor-val">--</span>
+                            <span id="guapo-ds18" class="sensor-val">--</span>
                             <span class="sensor-unit">°C</span>
                             <span class="sensor-status text-success">Normal</span>
                         </div>
-                        <div class="sensor-box">
-                            <span class="sensor-name">DHT22</span>
+                        <div class="sensor-box ds-dht-group">
+                            <span class="sensor-name">DHT22 (Suhu)</span>
+                            <i class="fa-solid fa-temperature-arrow-up sensor-icon text-warning"></i>
+                            <span id="guapo-dht-temp" class="sensor-val">--</span>
+                            <span class="sensor-unit">°C</span>
+                            <span class="sensor-status text-success">Normal</span>
+                        </div>
+                        <div class="sensor-box ds-dht-group">
+                            <span class="sensor-name">DHT22 (Hum)</span>
                             <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
-                            <span id="guapo-dht22" class="sensor-val">--</span>
+                            <span id="guapo-dht-hum" class="sensor-val">--</span>
                             <span class="sensor-unit">% RH</span>
                             <span class="sensor-status text-success">Normal</span>
                         </div>
+
+                        <!-- MQ SENSORS -->
                         <div class="sensor-box">
                             <span class="sensor-name">MQ-2</span>
                             <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
@@ -250,8 +276,9 @@
                         <div class="drift-details">
                             <span class="drift-title">PER-SENSOR DRIFT (%)</span>
                             <div class="drift-table-mock">
-                                <div><span id="drift-guapo-ds18b20">--</span><small>DS18B20</small></div>
-                                <div><span id="drift-guapo-dht22">--</span><small>DHT22</small></div>
+                                <div class="ds-dht-group"><span id="drift-guapo-ds18">--</span><small>DS18</small></div>
+                                <div class="ds-dht-group"><span id="drift-guapo-dht-temp">--</span><small>DHT Temp</small></div>
+                                <div class="ds-dht-group"><span id="drift-guapo-dht-hum">--</span><small>DHT Hum</small></div>
                                 <div><span id="drift-guapo-mq2">--</span><small>MQ-2</small></div>
                                 <div><span id="drift-guapo-mq4">--</span><small>MQ-4</small></div>
                                 <div><span id="drift-guapo-mq7">--</span><small>MQ-7</small></div>
@@ -265,14 +292,14 @@
 
             <!-- GRID TENGAH: CHART & STATISTICS -->
             <div id="section-middle" class="middle-grid">
-                <!-- PANEL GRAFIK -->
                 <div class="grid-panel chart-panel">
                     <div class="panel-subheader">
                         <h3>LIVE COMPARISON (ALL SENSORS)</h3>
                         <select id="sensor-selector" class="mock-select">
                             <option value="mq7">MQ-7 (CO)</option>
-                            <option value="ds18b20">DS18B20 (°C)</option>
-                            <option value="dht22">DHT22 (%RH)</option>
+                            <option value="ds18_temp">DS18B20 (°C)</option>
+                            <option value="dht_temp">DHT22 Temp (°C)</option>
+                            <option value="dht_hum">DHT22 Hum (%RH)</option>
                             <option value="mq2">MQ-2 (ppm)</option>
                             <option value="mq4">MQ-4 (ppm)</option>
                             <option value="mq135">MQ-135 (ppm)</option>
@@ -294,7 +321,6 @@
                     </div>
                 </div>
 
-                <!-- STATISTIK -->
                 <div class="grid-panel layout-stats-wide">
                     <h3>SYSTEM STATISTICS (TODAY)</h3>
                     <div class="stats-list">
@@ -304,7 +330,6 @@
                         <div class="stat-row"><i class="fa-solid fa-chart-simple"></i> <span>Total Data Points</span> <strong id="stat-total-points">0</strong></div>
                         <div class="stat-line"></div>
                         <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Avg Drift (Overall)</span> <strong id="stat-overall-avg-drift" class="text-warning">-- %</strong></div>
-                        <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Max Drift (Overall)</span> <strong id="stat-overall-max-drift" class="text-warning">-- %</strong></div>
                     </div>
                 </div>
             </div>
@@ -323,21 +348,23 @@
                         <thead>
                             <tr>
                                 <th rowspan="2">WAKTU</th>
-                                <th colspan="7" class="text-center bg-gabriel">GABRIEL 🦊 (Filter Box)</th>
-                                <th colspan="7" class="text-center bg-guapo">GUAPO 🐊 (Sensor Chamber)</th>
-                                <th rowspan="2">AVG DRIFT (%)</th>
+                                <th colspan="8" class="text-center bg-gabriel">GABRIEL 🦊 (Filter Box)</th>
+                                <th colspan="8" class="text-center bg-guapo">GUAPO 🐊 (Sensor Chamber)</th>
+                                <th rowspan="2">AVG DRIFT</th>
                             </tr>
                             <tr>
-                                <th>DS18B20<br><small>(°C)</small></th>
-                                <th>DHT22<br><small>(%RH)</small></th>
+                                <th class="ds-dht-group">DS18<br><small>(°C)</small></th>
+                                <th class="ds-dht-group">DHT T<br><small>(°C)</small></th>
+                                <th class="ds-dht-group">DHT H<br><small>(%RH)</small></th>
                                 <th>MQ-2<br><small>(ppm)</small></th>
                                 <th>MQ-4<br><small>(ppm)</small></th>
                                 <th>MQ-7<br><small>(ppm)</small></th>
                                 <th>MQ-135<br><small>(ppm)</small></th>
                                 <th>MQ-136<br><small>(ppm)</small></th>
                                 
-                                <th>DS18B20<br><small>(°C)</small></th>
-                                <th>DHT22<br><small>(%RH)</small></th>
+                                <th class="ds-dht-group">DS18<br><small>(°C)</small></th>
+                                <th class="ds-dht-group">DHT T<br><small>(°C)</small></th>
+                                <th class="ds-dht-group">DHT H<br><small>(%RH)</small></th>
                                 <th>MQ-2<br><small>(ppm)</small></th>
                                 <th>MQ-4<br><small>(ppm)</small></th>
                                 <th>MQ-7<br><small>(ppm)</small></th>
@@ -347,29 +374,26 @@
                         </thead>
                         <tbody id="table-body">
                             <tr>
-                                <td colspan="17" class="text-center" style="padding: 20px;">Memuat data dari Google Sheet...</td>
+                                <td colspan="18" class="text-center" style="padding: 20px;">Memuat data...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- FOOTER -->
             <footer class="main-footer">
-                <span>© 2025 Coal Smoke Monitoring System</span>
+                <span>© 2026 Coal Smoke Monitoring System</span>
                 <span>Gabriel 🦊 & Guapo 🐊 – Dual Redundant Monitoring Unit</span>
             </footer>
 
         </main>
     </div>
 
-    <!-- INTEGRASI APPS SCRIPT & LOGIC DASHBOARD -->
+    <!-- LOGIKA SCRIPT -->
     <script>
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo9TdjL8_Y7VMLnBTJ9pWghQmhx2dF6SR5WB1t0NdP6ZuJ3rMeXnyN0V-qWv32uc8I/exec";
-
         let historicalData = [];
 
-        // Formatting jam & tanggal
         function updateClock() {
             const now = new Date();
             document.getElementById('live-time').innerText = now.toLocaleTimeString('id-ID');
@@ -378,41 +402,29 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Bind checklist toggle di sidebar
+        // Bind Checklist Tampilan
         const bindToggle = (checkboxId, sectionId) => {
             const cb = document.getElementById(checkboxId);
             const el = document.getElementById(sectionId);
             if(cb && el) {
                 cb.addEventListener('change', function() {
-                    if (this.checked) {
-                        el.classList.remove('hidden-feature');
-                    } else {
-                        el.classList.add('hidden-feature');
-                    }
-                    updateUnitsGrid();
+                    if (this.checked) el.classList.remove('hidden-feature');
+                    else el.classList.add('hidden-feature');
                 });
             }
         };
 
-        const updateUnitsGrid = () => {
-            const gabriel = document.getElementById('panel-gabriel');
-            const guapo = document.getElementById('panel-guapo');
-            const unitsGrid = document.getElementById('section-panels');
-
-            const gabrielVisible = gabriel && !gabriel.classList.contains('hidden-feature');
-            const guapoVisible = guapo && !guapo.classList.contains('hidden-feature');
-
-            if (!gabrielVisible && !guapoVisible) {
-                unitsGrid.classList.add('hidden-feature');
-            } else {
-                unitsGrid.classList.remove('hidden-feature');
-                if (gabrielVisible && guapoVisible) {
-                    unitsGrid.style.gridTemplateColumns = '1fr 1fr';
-                } else {
-                    unitsGrid.style.gridTemplateColumns = '1fr';
-                }
-            }
-        };
+        // Bind Checklist Khusus DS18B20 & DHT22
+        const cbDsDht = document.getElementById('toggle-ds-dht');
+        if (cbDsDht) {
+            cbDsDht.addEventListener('change', function() {
+                const elements = document.querySelectorAll('.ds-dht-group');
+                elements.forEach(el => {
+                    if (this.checked) el.classList.remove('hidden-feature');
+                    else el.classList.add('hidden-feature');
+                });
+            });
+        }
 
         bindToggle('toggle-top-stats', 'section-top-stats');
         bindToggle('toggle-gabriel', 'panel-gabriel');
@@ -420,220 +432,125 @@
         bindToggle('toggle-middle', 'section-middle');
         bindToggle('toggle-sheet', 'section-sheet');
 
-        // Main Data Fetcher
         async function fetchSensorData() {
             try {
                 const response = await fetch(APPS_SCRIPT_URL);
-                if (!response.ok) throw new Error("HTTP error " + response.status);
+                if (!response.ok) throw new Error("HTTP " + response.status);
 
                 const resData = await response.json();
-                
-                // Mendukung jika response dikemas dalam { data: [...] } atau array langsung [...]
                 const rows = Array.isArray(resData) ? resData : (resData.data || []);
                 if (!rows || rows.length === 0) return;
 
                 historicalData = rows;
                 
-                // Update HTTP Status Bar
                 document.getElementById('stat-http').innerHTML = '200 <span class="sub-val">OK</span>';
                 document.getElementById('stat-sheet').innerHTML = 'Connected <i class="fa-regular fa-circle-check"></i>';
                 document.getElementById('stat-sheet').className = 'stat-value text-success';
                 document.getElementById('stat-last-update').innerText = new Date().toLocaleTimeString('id-ID');
 
-                // Data paling baru (baris paling akhir / paling atas tergantung balikannya)
-                const latest = rows[rows.length - 1];
-                updatePanelValues(latest);
-                renderTable(rows);
+                // Pilah data Gabriel dan Guapo berdasarkan kolom 'board'
+                const gabrielRows = rows.filter(r => (r.board || '').toLowerCase().includes('gabriel'));
+                const guapoRows = rows.filter(r => (r.board || '').toLowerCase().includes('guapo'));
+
+                const latestGabriel = gabrielRows[gabrielRows.length - 1] || {};
+                const latestGuapo = guapoRows[guapoRows.length - 1] || {};
+
+                updatePanelValues(latestGabriel, latestGuapo);
+                renderTable(gabrielRows, guapoRows);
                 renderChart(rows);
-                updateSystemStats(rows);
+
+                document.getElementById('stat-count-gabriel').innerText = gabrielRows.length;
+                document.getElementById('stat-count-guapo').innerText = guapoRows.length;
+                document.getElementById('stat-total-points').innerText = rows.length * 8;
 
             } catch (err) {
-                console.error("Gagal menarik data Google Sheet:", err);
-                document.getElementById('stat-http').innerHTML = 'ERR <span class="sub-val">Fail</span>';
-                document.getElementById('stat-http').className = 'stat-value text-danger';
+                console.error("Gagal menarik data:", err);
+                document.getElementById('stat-http').innerHTML = 'ERR';
                 document.getElementById('stat-sheet').innerHTML = 'Disconnected';
                 document.getElementById('stat-sheet').className = 'stat-value text-danger';
             }
         }
 
-        // Mapping Data dari Apps Script ke Elemen UI
-        function updatePanelValues(row) {
-            // Helper pembersih angka
-            const val = (v) => v !== undefined && v !== null && !isNaN(v) ? parseFloat(v) : 0;
+        function updatePanelValues(g, u) {
+            const num = (v) => v !== undefined && v !== null && !isNaN(v) ? parseFloat(v) : 0;
 
-            const gabriel = {
-                ds18b20: val(row.gabriel_ds18b20 || row[1]),
-                dht22: val(row.gabriel_dht22 || row[2]),
-                mq2: val(row.gabriel_mq2 || row[3]),
-                mq4: val(row.gabriel_mq4 || row[4]),
-                mq7: val(row.gabriel_mq7 || row[5]),
-                mq135: val(row.gabriel_mq135 || row[6]),
-                mq136: val(row.gabriel_mq136 || row[7])
-            };
+            // Gabriel
+            document.getElementById('gabriel-ds18').innerText = num(g.ds18_temp).toFixed(1);
+            document.getElementById('gabriel-dht-temp').innerText = num(g.dht_temp).toFixed(1);
+            document.getElementById('gabriel-dht-hum').innerText = num(g.dht_hum).toFixed(1);
+            document.getElementById('gabriel-mq2').innerText = Math.round(num(g.mq2));
+            document.getElementById('gabriel-mq4').innerText = Math.round(num(g.mq4));
+            document.getElementById('gabriel-mq7').innerText = Math.round(num(g.mq7));
+            document.getElementById('gabriel-mq135').innerText = Math.round(num(g.mq135));
+            document.getElementById('gabriel-mq136').innerText = Math.round(num(g.mq136));
 
-            const guapo = {
-                ds18b20: val(row.guapo_ds18b20 || row[8]),
-                dht22: val(row.guapo_dht22 || row[9]),
-                mq2: val(row.guapo_mq2 || row[10]),
-                mq4: val(row.guapo_mq4 || row[11]),
-                mq7: val(row.guapo_mq7 || row[12]),
-                mq135: val(row.guapo_mq135 || row[13]),
-                mq136: val(row.guapo_mq136 || row[14])
-            };
-
-            // Set text di Gabriel Panel
-            document.getElementById('gabriel-ds18b20').innerText = gabriel.ds18b20.toFixed(1);
-            document.getElementById('gabriel-dht22').innerText = gabriel.dht22.toFixed(1);
-            document.getElementById('gabriel-mq2').innerText = Math.round(gabriel.mq2);
-            document.getElementById('gabriel-mq4').innerText = Math.round(gabriel.mq4);
-            document.getElementById('gabriel-mq7').innerText = Math.round(gabriel.mq7);
-            document.getElementById('gabriel-mq135').innerText = Math.round(gabriel.mq135);
-            document.getElementById('gabriel-mq136').innerText = Math.round(gabriel.mq136);
-
-            // Set text di Guapo Panel
-            document.getElementById('guapo-ds18b20').innerText = guapo.ds18b20.toFixed(1);
-            document.getElementById('guapo-dht22').innerText = guapo.dht22.toFixed(1);
-            document.getElementById('guapo-mq2').innerText = Math.round(guapo.mq2);
-            document.getElementById('guapo-mq4').innerText = Math.round(guapo.mq4);
-            document.getElementById('guapo-mq7').innerText = Math.round(guapo.mq7);
-            document.getElementById('guapo-mq135').innerText = Math.round(guapo.mq135);
-            document.getElementById('guapo-mq136').innerText = Math.round(guapo.mq136);
-
-            // Hitung Per-Sensor Drift %
-            const calcDrift = (v1, v2) => v2 !== 0 ? (((v1 - v2) / v2) * 100) : 0;
-            
-            const drifts = {
-                ds18b20: calcDrift(gabriel.ds18b20, guapo.ds18b20),
-                dht22: calcDrift(gabriel.dht22, guapo.dht22),
-                mq2: calcDrift(gabriel.mq2, guapo.mq2),
-                mq4: calcDrift(gabriel.mq4, guapo.mq4),
-                mq7: calcDrift(gabriel.mq7, guapo.mq7),
-                mq135: calcDrift(gabriel.mq135, guapo.mq135),
-                mq136: calcDrift(gabriel.mq136, guapo.mq136)
-            };
-
-            const formatDriftText = (elId, val) => {
-                const el = document.getElementById(elId);
-                if(!el) return;
-                const sign = val > 0 ? '+' : '';
-                el.innerText = `${sign}${val.toFixed(2)}%`;
-                el.className = val >= 0 ? 'text-warning' : 'text-success';
-            };
-
-            formatDriftText('drift-gabriel-ds18b20', drifts.ds18b20);
-            formatDriftText('drift-gabriel-dht22', drifts.dht22);
-            formatDriftText('drift-gabriel-mq2', drifts.mq2);
-            formatDriftText('drift-gabriel-mq4', drifts.mq4);
-            formatDriftText('drift-gabriel-mq7', drifts.mq7);
-            formatDriftText('drift-gabriel-mq135', drifts.mq135);
-            formatDriftText('drift-gabriel-mq136', drifts.mq136);
-
-            // Inverse drift untuk Guapo
-            formatDriftText('drift-guapo-ds18b20', -drifts.ds18b20);
-            formatDriftText('drift-guapo-dht22', -drifts.dht22);
-            formatDriftText('drift-guapo-mq2', -drifts.mq2);
-            formatDriftText('drift-guapo-mq4', -drifts.mq4);
-            formatDriftText('drift-guapo-mq7', -drifts.mq7);
-            formatDriftText('drift-guapo-mq135', -drifts.mq135);
-            formatDriftText('drift-guapo-mq136', -drifts.mq136);
-
-            // Rata-rata Drift
-            const driftArr = Object.values(drifts);
-            const avgDrift = driftArr.reduce((a, b) => a + b, 0) / driftArr.length;
-            formatDriftText('gabriel-avg-drift', avgDrift);
-            formatDriftText('guapo-avg-drift', -avgDrift);
+            // Guapo
+            document.getElementById('guapo-ds18').innerText = num(u.ds18_temp).toFixed(1);
+            document.getElementById('guapo-dht-temp').innerText = num(u.dht_temp).toFixed(1);
+            document.getElementById('guapo-dht-hum').innerText = num(u.dht_hum).toFixed(1);
+            document.getElementById('guapo-mq2').innerText = Math.round(num(u.mq2));
+            document.getElementById('guapo-mq4').innerText = Math.round(num(u.mq4));
+            document.getElementById('guapo-mq7').innerText = Math.round(num(u.mq7));
+            document.getElementById('guapo-mq135').innerText = Math.round(num(u.mq135));
+            document.getElementById('guapo-mq136').innerText = Math.round(num(u.mq136));
         }
 
-        // Render Tabel Google Sheet
-        function renderTable(rows) {
+        function renderTable(gRows, uRows) {
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
 
-            // Ambil 10 data paling baru
-            const displayRows = rows.slice().reverse().slice(0, 15);
+            const maxLen = Math.max(gRows.length, uRows.length);
+            const limit = Math.min(maxLen, 10);
 
-            displayRows.forEach(row => {
+            for(let i = 0; i < limit; i++) {
+                const g = gRows[gRows.length - 1 - i] || {};
+                const u = uRows[uRows.length - 1 - i] || {};
+                const time = g.timestamp || u.timestamp || '--';
+
                 const tr = document.createElement('tr');
-                const time = row.timestamp || row.waktu || row[0] || '--';
-
-                const g_ds = row.gabriel_ds18b20 || row[1] || '--';
-                const g_dht = row.gabriel_dht22 || row[2] || '--';
-                const g_mq2 = row.gabriel_mq2 || row[3] || '--';
-                const g_mq4 = row.gabriel_mq4 || row[4] || '--';
-                const g_mq7 = row.gabriel_mq7 || row[5] || '--';
-                const g_mq135 = row.gabriel_mq135 || row[6] || '--';
-                const g_mq136 = row.gabriel_mq136 || row[7] || '--';
-
-                const u_ds = row.guapo_ds18b20 || row[8] || '--';
-                const u_dht = row.guapo_dht22 || row[9] || '--';
-                const u_mq2 = row.guapo_mq2 || row[10] || '--';
-                const u_mq4 = row.guapo_mq4 || row[11] || '--';
-                const u_mq7 = row.guapo_mq7 || row[12] || '--';
-                const u_mq135 = row.guapo_mq135 || row[13] || '--';
-                const u_mq136 = row.guapo_mq136 || row[14] || '--';
-
-                const avgDrift = row.avg_drift !== undefined ? parseFloat(row.avg_drift).toFixed(2) : '--';
-
                 tr.innerHTML = `
                     <td>${time}</td>
-                    <td>${g_ds}</td><td>${g_dht}</td><td>${g_mq2}</td><td>${g_mq4}</td><td>${g_mq7}</td><td>${g_mq135}</td><td>${g_mq136}</td>
-                    <td>${u_ds}</td><td>${u_dht}</td><td>${u_mq2}</td><td>${u_mq4}</td><td>${u_mq7}</td><td>${u_mq135}</td><td>${u_mq136}</td>
-                    <td>${avgDrift}%</td>
+                    <td class="ds-dht-group">${g.ds18_temp || '--'}</td>
+                    <td class="ds-dht-group">${g.dht_temp || '--'}</td>
+                    <td class="ds-dht-group">${g.dht_hum || '--'}</td>
+                    <td>${g.mq2 || '--'}</td><td>${g.mq4 || '--'}</td><td>${g.mq7 || '--'}</td><td>${g.mq135 || '--'}</td><td>${g.mq136 || '--'}</td>
+                    <td class="ds-dht-group">${u.ds18_temp || '--'}</td>
+                    <td class="ds-dht-group">${u.dht_temp || '--'}</td>
+                    <td class="ds-dht-group">${u.dht_hum || '--'}</td>
+                    <td>${u.mq2 || '--'}</td><td>${u.mq4 || '--'}</td><td>${u.mq7 || '--'}</td><td>${u.mq135 || '--'}</td><td>${u.mq136 || '--'}</td>
+                    <td>-- %</td>
                 `;
                 tbody.appendChild(tr);
-            });
+            }
+            
+            // Re-apply filter penyeimbang tampilan jika disembunyikan
+            if(cbDsDht && !cbDsDht.checked) {
+                document.querySelectorAll('.ds-dht-group').forEach(el => el.classList.add('hidden-feature'));
+            }
         }
 
-        // Render Live Chart ke SVG
         function renderChart(rows) {
             if (rows.length < 2) return;
+            const sensor = document.getElementById('sensor-selector').value;
+            const recent = rows.slice(-10);
 
-            const selectedSensor = document.getElementById('sensor-selector').value;
-            const recent = rows.slice(-10); // 10 data terakhir
-
-            const keyGabriel = 'gabriel_' + selectedSensor;
-            const keyGuapo = 'guapo_' + selectedSensor;
-
-            const gabrielVals = recent.map(r => parseFloat(r[keyGabriel] || r[1] || 0));
-            const guapoVals = recent.map(r => parseFloat(r[keyGuapo] || r[8] || 0));
-
-            const allVals = [...gabrielVals, ...guapoVals];
-            const maxVal = Math.max(...allVals, 1);
-            const minVal = Math.min(...allVals, 0);
+            const vals = recent.map(r => parseFloat(r[sensor] || 0));
+            const maxVal = Math.max(...vals, 1);
+            const minVal = Math.min(...vals, 0);
 
             const mapToY = (val) => 180 - ((val - minVal) / (maxVal - minVal || 1)) * 140;
 
-            const buildPath = (vals) => {
-                return vals.map((v, idx) => {
-                    const x = (idx / (vals.length - 1)) * 500;
-                    const y = mapToY(v);
-                    return `${idx === 0 ? 'M' : 'L'}${x},${y}`;
-                }).join(' ');
-            };
+            const buildPath = (data) => data.map((v, idx) => {
+                const x = (idx / (data.length - 1)) * 500;
+                return `${idx === 0 ? 'M' : 'L'}${x},${mapToY(v)}`;
+            }).join(' ');
 
-            document.getElementById('chart-path-gabriel').setAttribute('d', buildPath(gabrielVals));
-            document.getElementById('chart-path-guapo').setAttribute('d', buildPath(guapoVals));
-
-            // Update Timeline Text
-            const timelineBox = document.getElementById('chart-timeline');
-            timelineBox.innerHTML = '';
-            recent.filter((_, i) => i % 2 === 0).forEach(r => {
-                const span = document.createElement('span');
-                span.innerText = r.timestamp || r.waktu || r[0] || '--';
-                timelineBox.appendChild(span);
-            });
-        }
-
-        function updateSystemStats(rows) {
-            document.getElementById('stat-count-gabriel').innerText = rows.length;
-            document.getElementById('stat-count-guapo').innerText = rows.length;
-            document.getElementById('stat-total-points').innerText = rows.length * 14;
+            document.getElementById('chart-path-gabriel').setAttribute('d', buildPath(vals));
         }
 
         document.getElementById('sensor-selector').addEventListener('change', () => renderChart(historicalData));
         document.getElementById('btn-refresh').addEventListener('click', fetchSensorData);
 
-        // Fetch otomatis setiap 5 detik
         fetchSensorData();
         setInterval(fetchSensorData, 5000);
     </script>
