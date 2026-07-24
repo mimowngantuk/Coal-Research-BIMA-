@@ -1,3 +1,6 @@
+/* ==========================================
+   GLOBAL STYLES & RESET
+========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +14,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     color: #e1e4e8;
     min-height: 100vh;
     overflow-x: hidden;
@@ -23,7 +25,9 @@ body {
     min-height: 100vh;
 }
 
-/* SIDEBAR STYLING */
+/* ==========================================
+   SIDEBAR & WIDGET KONTROL
+========================================== */
 .sidebar {
     background-color: rgba(18, 22, 28, 0.95);
     border-right: 1px solid #252a33;
@@ -63,7 +67,43 @@ body {
     color: #6e7681;
 }
 
-/* MAIN CONTENT STYLING */
+.widget-control-box {
+    background-color: rgba(28, 33, 40, 0.6);
+    border: 1px solid #252a33;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.widget-control-box h3 {
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.checklist-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #c9d1d9;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    accent-color: #ffc107;
+    cursor: pointer;
+}
+
+/* ==========================================
+   MAIN CONTENT & TOP STATUS BAR
+========================================== */
 .main-content {
     padding: 20px;
     display: flex;
@@ -71,7 +111,6 @@ body {
     gap: 20px;
 }
 
-/* TOP STATUS GRID */
 .top-stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr) 180px;
@@ -139,7 +178,9 @@ body {
     display: block;
 }
 
-/* BOX UNIT SENSOR GABRIEL & GUAPO */
+/* ==========================================
+   PANEL UNIT (GABRIEL & GUAPO)
+========================================== */
 .units-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -173,11 +214,45 @@ body {
     font-weight: 600;
 }
 
+/* KELOMPOK SENSOR TERPISAH (MQ & SUHU) */
+.sensor-groups-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.sensor-group-box {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.group-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #8b949e;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+}
+
+.group-title i {
+    color: #ffc107;
+}
+
 .sensors-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 8px;
-    margin-bottom: 15px;
+}
+
+.temp-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
 }
 
 .sensor-box {
@@ -226,7 +301,9 @@ body {
     font-weight: 600;
 }
 
-/* DRIFT CONTAINER DI BAWAH SENSOR */
+/* ==========================================
+   DRIFT SUB-PANEL
+========================================== */
 .drift-sub-panel {
     display: grid;
     grid-template-columns: 130px 1fr;
@@ -261,6 +338,7 @@ body {
     grid-template-columns: repeat(7, 1fr);
     gap: 4px;
     text-align: center;
+    align-items: center;
 }
 
 .drift-table-mock div {
@@ -280,7 +358,9 @@ body {
     margin-top: 2px;
 }
 
-/* MIDDLE GRID (CHART & STATS) */
+/* ==========================================
+   MIDDLE GRID (CHART & STATS)
+========================================== */
 .middle-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -371,7 +451,9 @@ body {
     margin: 2px 0;
 }
 
-/* LOWER DATA TABLE STYLING */
+/* ==========================================
+   LOWER DATA TABLE STYLING
+========================================== */
 .table-container {
     background-color: rgba(22, 27, 34, 0.85);
     border: 1px solid #252a33;
@@ -420,7 +502,9 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-.table-scroll {
+.table-scroll, .main-sheet-scroll {
+    max-height: 350px;
+    overflow-y: auto;
     overflow-x: auto;
 }
 
@@ -458,12 +542,21 @@ tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* UTILITIES */
+/* ==========================================
+   UTILITIES & HELPERS
+========================================== */
 .text-success { color: #2ea44f !important; }
 .text-warning { color: #ffc107 !important; }
 .text-danger { color: #f85149 !important; }
 .text-center { text-align: center; }
 
+.hidden-feature {
+    display: none !important;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
 .main-footer {
     display: flex;
     justify-content: space-between;
@@ -472,50 +565,4 @@ tbody tr:hover {
     border-top: 1px solid #252a33;
     padding-top: 15px;
     margin-top: 10px;
-}
-
-/* Widget Checklist Box di Sidebar */
-.widget-control-box {
-    background-color: rgba(28, 33, 40, 0.6);
-    border: 1px solid #252a33;
-    border-radius: 6px;
-    padding: 12px;
-}
-
-.widget-control-box h3 {
-    font-size: 0.75rem;
-    color: #8b949e;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-}
-
-.checklist-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    color: #c9d1d9;
-    cursor: pointer;
-}
-
-.checkbox-label input[type="checkbox"] {
-    cursor: pointer;
-    accent-color: #ffc107;
-}
-
-/* Utility Class untuk Sembunyi */
-.hidden-feature {
-    display: none !important;
-}
-
-.main-sheet-scroll {
-    max-height: 350px;
-    overflow-y: auto;
-    overflow-x: auto;
 }
