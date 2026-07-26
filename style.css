@@ -262,6 +262,48 @@ body {
     font-weight: 600;
 }
 
+/* MISI 1: SECTION BARU DATA PPM STYLING */
+.ppm-section-container {
+    background-color: rgba(22, 27, 34, 0.85);
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.ppm-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.ppm-unit-box {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.ppm-unit-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #ffc107;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.ppm-card {
+    background-color: rgba(13, 17, 23, 0.95);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.sub-adc-text {
+    font-size: 0.55rem;
+    color: #6e7681;
+    margin-top: 3px;
+}
+
 /* DRIFT CONTAINER DI BAWAH SENSOR */
 .drift-sub-panel {
     display: grid;
@@ -430,6 +472,7 @@ body {
 .table-actions {
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
 .btn {
@@ -441,9 +484,10 @@ body {
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
+    text-decoration: none;
 }
 
 .btn-yellow {
@@ -452,8 +496,74 @@ body {
     color: #000000;
 }
 
+.btn-yellow:hover {
+    background-color: #e0a800;
+}
+
 .btn-outline:hover {
     background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* MISI 2: DATE FILTER BAR STYLING */
+.date-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(13, 17, 23, 0.8);
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.date-filter-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #c9d1d9;
+}
+
+.date-buttons-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.date-btn {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #8b949e;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.date-btn:hover {
+    color: #ffffff;
+    border-color: #ffc107;
+}
+
+.date-btn.active {
+    background-color: #ffc107;
+    color: #000000;
+    border-color: #ffc107;
+    font-weight: 700;
+}
+
+.custom-date-input {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #ffc107;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    outline: none;
 }
 
 .table-scroll {
