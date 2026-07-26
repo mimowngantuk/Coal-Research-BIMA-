@@ -39,8 +39,8 @@
                         <span>Guapo Panel</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" id="toggle-ppm-section" checked>
-                        <span>Data Konversi PPM</span>
+                        <input type="checkbox" id="toggle-mq-sections" checked>
+                        <span>Section Detail MQ Series</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-middle" checked>
@@ -104,7 +104,7 @@
                 </div>
             </div>
 
-            <!-- PANEL GABRIEL & GUAPO -->
+            <!-- PANEL OVERVIEW GABRIEL & GUAPO -->
             <div id="section-panels" class="units-grid">
                 
                 <!-- GABRIEL PANEL -->
@@ -303,97 +303,229 @@
 
             </div>
 
-            <!-- MISI 1: SECTION BARU - DATA KONVERSI PPM -->
-            <div id="section-ppm" class="ppm-section-container">
-                <div class="panel-header">
-                    <h2><i class="fa-solid fa-flask-vial text-warning"></i> DATA KONVERSI SENSOR GAS (PERSAMAAN PPM)</h2>
-                    <span class="status-indicator text-warning"><i class="fa-solid fa-calculator"></i> Konversi Real-Time</span>
+            <!-- SECTION BARU: INFORMASI DETAIL SETIAP SENSOR MQ -->
+            <div id="section-mq-details" class="mq-details-wrapper">
+                <div class="section-title-bar">
+                    <h2><i class="fa-solid fa-microchip text-warning"></i> DETAIL ANALISIS INDIVIDUAL SENSOR MQ SERIES</h2>
+                    <span class="sub-title">Perbandingan Gabriel vs Guapo, Hasil Konversi PPM & Drift Per-Sensor</span>
                 </div>
-                
-                <div class="ppm-grid-container">
-                    <!-- GABRIEL PPM BOX -->
-                    <div class="ppm-unit-box">
-                        <h3 class="ppm-unit-title">GABRIEL 🦊 – KONSENTRASI GAS (PPM)</h3>
-                        <div class="sensors-grid mq-grid">
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-2</span>
-                                <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
-                                <span id="gabriel-ppm-mq2" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="gabriel-adc-sub-mq2" class="sub-adc-text">ADC: --</small>
+
+                <div class="mq-cards-grid">
+                    <!-- SECTION MQ-2 -->
+                    <div class="mq-detail-card">
+                        <div class="mq-card-header">
+                            <div class="mq-title">
+                                <span class="mq-badge">MQ-2</span>
+                                <div>
+                                    <h3>Asap, LPG, Propana & Methane</h3>
+                                    <p>General Smoke & Flammable Gas Sensor</p>
+                                </div>
                             </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-4</span>
-                                <i class="fa-solid fa-fire sensor-icon text-warning"></i>
-                                <span id="gabriel-ppm-mq4" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="gabriel-adc-sub-mq4" class="sub-adc-text">ADC: --</small>
+                            <span id="mq2-status-pill" class="status-pill safe">Aman</span>
+                        </div>
+                        <div class="mq-card-body">
+                            <div class="unit-compare-box">
+                                <div class="unit-col">
+                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
+                                    <div class="val-display">
+                                        <span id="sec-gabriel-mq2-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-gabriel-mq2-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                                <div class="vs-divider">VS</div>
+                                <div class="unit-col">
+                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
+                                    <div class="val-display">
+                                        <span id="sec-guapo-mq2-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-guapo-mq2-adc" class="adc-sub">ADC: --</span>
+                                </div>
                             </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-7</span>
-                                <span class="sensor-gas">CO</span>
-                                <span id="gabriel-ppm-mq7" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="gabriel-adc-sub-mq7" class="sub-adc-text">ADC: --</small>
-                            </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-135</span>
-                                <i class="fa-solid fa-smog sensor-icon text-warning"></i>
-                                <span id="gabriel-ppm-mq135" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="gabriel-adc-sub-mq135" class="sub-adc-text">ADC: --</small>
-                            </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-136</span>
-                                <span class="sensor-gas">H₂S</span>
-                                <span id="gabriel-ppm-mq136" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="gabriel-adc-sub-mq136" class="sub-adc-text">ADC: --</small>
+                            <div class="mq-footer-info">
+                                <div class="info-item">
+                                    <span>Drift Nilai ADC:</span>
+                                    <strong id="sec-mq2-drift">--%</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>Range Ideal:</span>
+                                    <strong>200 - 10,000 ppm</strong>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- GUAPO PPM BOX -->
-                    <div class="ppm-unit-box">
-                        <h3 class="ppm-unit-title">GUAPO 🐊 – KONSENTRASI GAS (PPM)</h3>
-                        <div class="sensors-grid mq-grid">
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-2</span>
-                                <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
-                                <span id="guapo-ppm-mq2" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="guapo-adc-sub-mq2" class="sub-adc-text">ADC: --</small>
+                    <!-- SECTION MQ-4 -->
+                    <div class="mq-detail-card">
+                        <div class="mq-card-header">
+                            <div class="mq-title">
+                                <span class="mq-badge">MQ-4</span>
+                                <div>
+                                    <h3>Metana (CH₄) & Gas Alam</h3>
+                                    <p>CNG / Natural Gas Specific Sensor</p>
+                                </div>
                             </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-4</span>
-                                <i class="fa-solid fa-fire sensor-icon text-warning"></i>
-                                <span id="guapo-ppm-mq4" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="guapo-adc-sub-mq4" class="sub-adc-text">ADC: --</small>
+                            <span id="mq4-status-pill" class="status-pill safe">Aman</span>
+                        </div>
+                        <div class="mq-card-body">
+                            <div class="unit-compare-box">
+                                <div class="unit-col">
+                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
+                                    <div class="val-display">
+                                        <span id="sec-gabriel-mq4-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-gabriel-mq4-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                                <div class="vs-divider">VS</div>
+                                <div class="unit-col">
+                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
+                                    <div class="val-display">
+                                        <span id="sec-guapo-mq4-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-guapo-mq4-adc" class="adc-sub">ADC: --</span>
+                                </div>
                             </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-7</span>
-                                <span class="sensor-gas">CO</span>
-                                <span id="guapo-ppm-mq7" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="guapo-adc-sub-mq7" class="sub-adc-text">ADC: --</small>
-                            </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-135</span>
-                                <i class="fa-solid fa-smog sensor-icon text-warning"></i>
-                                <span id="guapo-ppm-mq135" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="guapo-adc-sub-mq135" class="sub-adc-text">ADC: --</small>
-                            </div>
-                            <div class="sensor-box ppm-card">
-                                <span class="sensor-name">MQ-136</span>
-                                <span class="sensor-gas">H₂S</span>
-                                <span id="guapo-ppm-mq136" class="sensor-val text-warning">--</span>
-                                <span class="sensor-unit">ppm</span>
-                                <small id="guapo-adc-sub-mq136" class="sub-adc-text">ADC: --</small>
+                            <div class="mq-footer-info">
+                                <div class="info-item">
+                                    <span>Drift Nilai ADC:</span>
+                                    <strong id="sec-mq4-drift">--%</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>Range Ideal:</span>
+                                    <strong>300 - 10,000 ppm</strong>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- SECTION MQ-7 -->
+                    <div class="mq-detail-card">
+                        <div class="mq-card-header">
+                            <div class="mq-title">
+                                <span class="mq-badge">MQ-7</span>
+                                <div>
+                                    <h3>Karbon Monoksida (CO)</h3>
+                                    <p>Toxic Carbon Monoxide Sensor</p>
+                                </div>
+                            </div>
+                            <span id="mq7-status-pill" class="status-pill safe">Aman</span>
+                        </div>
+                        <div class="mq-card-body">
+                            <div class="unit-compare-box">
+                                <div class="unit-col">
+                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
+                                    <div class="val-display">
+                                        <span id="sec-gabriel-mq7-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-gabriel-mq7-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                                <div class="vs-divider">VS</div>
+                                <div class="unit-col">
+                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
+                                    <div class="val-display">
+                                        <span id="sec-guapo-mq7-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-guapo-mq7-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                            </div>
+                            <div class="mq-footer-info">
+                                <div class="info-item">
+                                    <span>Drift Nilai ADC:</span>
+                                    <strong id="sec-mq7-drift">--%</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>Range Ideal:</span>
+                                    <strong>20 - 2,000 ppm</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION MQ-135 -->
+                    <div class="mq-detail-card">
+                        <div class="mq-card-header">
+                            <div class="mq-title">
+                                <span class="mq-badge">MQ-135</span>
+                                <div>
+                                    <h3>Kualitas Udara, CO₂, & Amonia</h3>
+                                    <p>Air Quality & Hazardous Gas Sensor</p>
+                                </div>
+                            </div>
+                            <span id="mq135-status-pill" class="status-pill safe">Aman</span>
+                        </div>
+                        <div class="mq-card-body">
+                            <div class="unit-compare-box">
+                                <div class="unit-col">
+                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
+                                    <div class="val-display">
+                                        <span id="sec-gabriel-mq135-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-gabriel-mq135-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                                <div class="vs-divider">VS</div>
+                                <div class="unit-col">
+                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
+                                    <div class="val-display">
+                                        <span id="sec-guapo-mq135-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-guapo-mq135-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                            </div>
+                            <div class="mq-footer-info">
+                                <div class="info-item">
+                                    <span>Drift Nilai ADC:</span>
+                                    <strong id="sec-mq135-drift">--%</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>Range Ideal:</span>
+                                    <strong>10 - 1,000 ppm</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION MQ-136 -->
+                    <div class="mq-detail-card mq-card-wide">
+                        <div class="mq-card-header">
+                            <div class="mq-title">
+                                <span class="mq-badge">MQ-136</span>
+                                <div>
+                                    <h3>Hidrogen Sulfida (H₂S)</h3>
+                                    <p>Hydrogen Sulfide Gas Sensor (Coal Gasification Indicator)</p>
+                                </div>
+                            </div>
+                            <span id="mq136-status-pill" class="status-pill safe">Aman</span>
+                        </div>
+                        <div class="mq-card-body">
+                            <div class="unit-compare-box">
+                                <div class="unit-col">
+                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
+                                    <div class="val-display">
+                                        <span id="sec-gabriel-mq136-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-gabriel-mq136-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                                <div class="vs-divider">VS</div>
+                                <div class="unit-col">
+                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
+                                    <div class="val-display">
+                                        <span id="sec-guapo-mq136-ppm" class="ppm-val">--</span> <small>PPM</small>
+                                    </div>
+                                    <span id="sec-guapo-mq136-adc" class="adc-sub">ADC: --</span>
+                                </div>
+                            </div>
+                            <div class="mq-footer-info">
+                                <div class="info-item">
+                                    <span>Drift Nilai ADC:</span>
+                                    <strong id="sec-mq136-drift">--%</strong>
+                                </div>
+                                <div class="info-item">
+                                    <span>Range Ideal:</span>
+                                    <strong>1 - 200 ppm</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -448,7 +580,6 @@
                 <div class="table-header">
                     <h3>DATA TABLE – GOOGLE SHEET LIVE FEED</h3>
                     <div class="table-actions">
-                        <!-- MISI 2: TOMBOL OPEN SHEET -->
                         <a href="https://docs.google.com/spreadsheets/d/1jT6JOZUM5Q5iQ_B5FMAfcT_b4u5Vccy8v8ZCaZ1sm_k" target="_blank" class="btn btn-yellow">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i> OPEN SHEET
                         </a>
@@ -456,7 +587,7 @@
                     </div>
                 </div>
 
-                <!-- MISI 2: FILTER PILIH TANGGAL BAWAH SECTION SHEET -->
+                <!-- FILTER PILIH TANGGAL BAWAH SECTION SHEET -->
                 <div class="date-filter-bar">
                     <div class="date-filter-title">
                         <i class="fa-regular fa-calendar-days text-warning"></i>
@@ -523,43 +654,32 @@
         let selectedDateFilter = "ALL";
 
         // Fungsi Rumus Konversi ADC MQ Sensor ke PPM
-        // Menggunakan kurva karakteristik log-log standar MQ sensor
         function adcToPpm(sensorType, adcValue) {
             if (!adcValue || adcValue <= 0) return 0;
             
-            // Konversi nilai ADC (0-1023) ke Resistansi Sensor (Rs)
-            // assuming RL = 10k Ohm, Vcc = 5V
             const Vout = (adcValue / 1023.0) * 5.0;
-            if (Vout >= 4.95) return 9999; // cap max
+            if (Vout >= 4.95) return 9999; 
             if (Vout <= 0.05) return 0;
             
             const RL = 10.0; // kOhm
             const Rs = ((5.0 - Vout) / Vout) * RL;
             
-            // Estimasi R0 rata-rata udara bersih untuk masing-masing sensor MQ
             let R0 = 10.0; 
             let a = 100.0;
             let b = -1.5;
 
             switch(sensorType.toLowerCase()) {
-                case 'mq2':   // LPG / Smoke
-                    R0 = 9.83;  a = 574.25; b = -2.222; break;
-                case 'mq4':   // Methane CH4
-                    R0 = 4.40;  a = 1012.7; b = -2.786; break;
-                case 'mq7':   // CO
-                    R0 = 27.0;  a = 99.042; b = -1.518; break;
-                case 'mq135': // Air Quality / CO2
-                    R0 = 3.60;  a = 110.47; b = -2.862; break;
-                case 'mq136': // H2S
-                    R0 = 20.0;  a = 36.117; b = -1.674; break;
-                default:
-                    R0 = 10.0;  a = 100.0;  b = -1.5;
+                case 'mq2':   R0 = 9.83;  a = 574.25; b = -2.222; break;
+                case 'mq4':   R0 = 4.40;  a = 1012.7; b = -2.786; break;
+                case 'mq7':   R0 = 27.0;  a = 99.042; b = -1.518; break;
+                case 'mq135': R0 = 3.60;  a = 110.47; b = -2.862; break;
+                case 'mq136': R0 = 20.0;  a = 36.117; b = -1.674; break;
+                default:      R0 = 10.0;  a = 100.0;  b = -1.5;
             }
 
             const ratio = Rs / R0;
             if (ratio <= 0) return 0;
 
-            // Rumus PPM = a * (Rs/R0)^b
             const ppm = a * Math.pow(ratio, b);
             
             if (isNaN(ppm) || !isFinite(ppm)) return 0;
@@ -614,7 +734,7 @@
         bindToggle('toggle-top-stats', 'section-top-stats');
         bindToggle('toggle-gabriel', 'panel-gabriel');
         bindToggle('toggle-guapo', 'panel-guapo');
-        bindToggle('toggle-ppm-section', 'section-ppm');
+        bindToggle('toggle-mq-sections', 'section-mq-details');
         bindToggle('toggle-middle', 'section-middle');
         bindToggle('toggle-sheet', 'section-sheet');
 
@@ -694,24 +814,12 @@
             document.getElementById('guapo-mq135').innerText = Math.round(guapo.mq135);
             document.getElementById('guapo-mq136').innerText = Math.round(guapo.mq136);
 
-            // 2. SET DATA KONVERSI PPM DI SECTION BARU (MISI 1)
+            // Hitung PPM tiap sensor
             const g_ppm2 = adcToPpm('mq2', gabriel.mq2);
             const g_ppm4 = adcToPpm('mq4', gabriel.mq4);
             const g_ppm7 = adcToPpm('mq7', gabriel.mq7);
             const g_ppm135 = adcToPpm('mq135', gabriel.mq135);
             const g_ppm136 = adcToPpm('mq136', gabriel.mq136);
-
-            document.getElementById('gabriel-ppm-mq2').innerText = g_ppm2;
-            document.getElementById('gabriel-ppm-mq4').innerText = g_ppm4;
-            document.getElementById('gabriel-ppm-mq7').innerText = g_ppm7;
-            document.getElementById('gabriel-ppm-mq135').innerText = g_ppm135;
-            document.getElementById('gabriel-ppm-mq136').innerText = g_ppm136;
-
-            document.getElementById('gabriel-adc-sub-mq2').innerText = `ADC: ${Math.round(gabriel.mq2)}`;
-            document.getElementById('gabriel-adc-sub-mq4').innerText = `ADC: ${Math.round(gabriel.mq4)}`;
-            document.getElementById('gabriel-adc-sub-mq7').innerText = `ADC: ${Math.round(gabriel.mq7)}`;
-            document.getElementById('gabriel-adc-sub-mq135').innerText = `ADC: ${Math.round(gabriel.mq135)}`;
-            document.getElementById('gabriel-adc-sub-mq136').innerText = `ADC: ${Math.round(gabriel.mq136)}`;
 
             const u_ppm2 = adcToPpm('mq2', guapo.mq2);
             const u_ppm4 = adcToPpm('mq4', guapo.mq4);
@@ -719,19 +827,46 @@
             const u_ppm135 = adcToPpm('mq135', guapo.mq135);
             const u_ppm136 = adcToPpm('mq136', guapo.mq136);
 
-            document.getElementById('guapo-ppm-mq2').innerText = u_ppm2;
-            document.getElementById('guapo-ppm-mq4').innerText = u_ppm4;
-            document.getElementById('guapo-ppm-mq7').innerText = u_ppm7;
-            document.getElementById('guapo-ppm-mq135').innerText = u_ppm135;
-            document.getElementById('guapo-ppm-mq136').innerText = u_ppm136;
+            // 2. SET DATA DI SECTION INDIVIDUAL MQ CARDS
+            const setMqCard = (mqKey, gAdc, uAdc, gPpm, uPpm) => {
+                document.getElementById(`sec-gabriel-${mqKey}-ppm`).innerText = gPpm;
+                document.getElementById(`sec-gabriel-${mqKey}-adc`).innerText = `ADC: ${Math.round(gAdc)}`;
+                document.getElementById(`sec-guapo-${mqKey}-ppm`).innerText = uPpm;
+                document.getElementById(`sec-guapo-${mqKey}-adc`).innerText = `ADC: ${Math.round(uAdc)}`;
 
-            document.getElementById('guapo-adc-sub-mq2').innerText = `ADC: ${Math.round(guapo.mq2)}`;
-            document.getElementById('guapo-adc-sub-mq4').innerText = `ADC: ${Math.round(guapo.mq4)}`;
-            document.getElementById('guapo-adc-sub-mq7').innerText = `ADC: ${Math.round(guapo.mq7)}`;
-            document.getElementById('guapo-adc-sub-mq135').innerText = `ADC: ${Math.round(guapo.mq135)}`;
-            document.getElementById('guapo-adc-sub-mq136').innerText = `ADC: ${Math.round(guapo.mq136)}`;
+                // Drift calculation
+                const drift = uAdc !== 0 ? (((gAdc - uAdc) / uAdc) * 100) : 0;
+                const sign = drift > 0 ? '+' : '';
+                const driftEl = document.getElementById(`sec-${mqKey}-drift`);
+                if(driftEl) {
+                    driftEl.innerText = `${sign}${drift.toFixed(2)}%`;
+                    driftEl.className = drift >= 0 ? 'text-warning' : 'text-success';
+                }
 
-            // Hitung Per-Sensor Drift %
+                // Update Status Pill
+                const maxPpm = Math.max(gPpm, uPpm);
+                const pillEl = document.getElementById(`${mqKey}-status-pill`);
+                if(pillEl) {
+                    if(maxPpm > 1000) {
+                        pillEl.innerText = "BAHAYA";
+                        pillEl.className = "status-pill danger";
+                    } else if(maxPpm > 400) {
+                        pillEl.innerText = "WASPADA";
+                        pillEl.className = "status-pill warning";
+                    } else {
+                        pillEl.innerText = "AMAN";
+                        pillEl.className = "status-pill safe";
+                    }
+                }
+            };
+
+            setMqCard('mq2', gabriel.mq2, guapo.mq2, g_ppm2, u_ppm2);
+            setMqCard('mq4', gabriel.mq4, guapo.mq4, g_ppm4, u_ppm4);
+            setMqCard('mq7', gabriel.mq7, guapo.mq7, g_ppm7, u_ppm7);
+            setMqCard('mq135', gabriel.mq135, guapo.mq135, g_ppm135, u_ppm135);
+            setMqCard('mq136', gabriel.mq136, guapo.mq136, g_ppm136, u_ppm136);
+
+            // Hitung Per-Sensor Drift % untuk Overview Panel
             const calcDrift = (v1, v2) => v2 !== 0 ? (((v1 - v2) / v2) * 100) : 0;
             
             const drifts = {
@@ -779,20 +914,18 @@
             const rawTime = row.timestamp || row.waktu || row[0] || '';
             if (!rawTime) return '';
             
-            // Coba parse format date baku atau iso
             let d = new Date(rawTime);
             if (!isNaN(d.getTime())) {
                 return d.toISOString().split('T')[0];
             }
             
-            // Coba ekstrak substring tanggal jika dalam format string lokal
             const match = rawTime.match(/(\d{4}-\d{2}-\d{2})/);
             if (match) return match[0];
 
             return '';
         }
 
-        // MISI 2: POPULATE FILTER TANGGAL SECARA OTOMATIS
+        // POPULATE FILTER TANGGAL SECARA OTOMATIS
         function populateDateButtons(rows) {
             const container = document.getElementById('date-buttons-container');
             const datesSet = new Set();
@@ -802,7 +935,6 @@
                 if (dateStr) datesSet.add(dateStr);
             });
 
-            // Rebuild tombol jika ada tanggal unik
             let buttonsHtml = `<button class="date-btn ${selectedDateFilter === 'ALL' ? 'active' : ''}" onclick="setTableDateFilter('ALL')">Semua Tanggal</button>`;
             
             Array.from(datesSet).sort().reverse().forEach(dateStr => {
@@ -830,7 +962,7 @@
             }
         });
 
-        // MISI 2: RENDER TABEL TERFILTER BERDASARKAN TANGGAL
+        // RENDER TABEL TERFILTER BERDASARKAN TANGGAL
         function renderFilteredTable() {
             if (!historicalData || historicalData.length === 0) return;
 

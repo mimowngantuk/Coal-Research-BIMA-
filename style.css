@@ -262,46 +262,164 @@ body {
     font-weight: 600;
 }
 
-/* MISI 1: SECTION BARU DATA PPM STYLING */
-.ppm-section-container {
+/* SECTION BARU: STYLING DETAIL SENSOR MQ INDIVIDUAL */
+.mq-details-wrapper {
     background-color: rgba(22, 27, 34, 0.85);
     border: 1px solid #ffc107;
     border-radius: 8px;
     padding: 16px;
-    transition: all 0.3s ease;
 }
 
-.ppm-grid-container {
+.section-title-bar {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #252a33;
+}
+
+.section-title-bar h2 {
+    font-size: 0.95rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title-bar .sub-title {
+    font-size: 0.7rem;
+    color: #8b949e;
+}
+
+.mq-cards-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    margin-top: 10px;
 }
 
-.ppm-unit-box {
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid rgba(255, 193, 7, 0.2);
+.mq-detail-card {
+    background: rgba(13, 17, 23, 0.9);
+    border: 1px solid #30363d;
     border-radius: 8px;
-    padding: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.ppm-unit-title {
-    font-size: 0.78rem;
+.mq-card-wide {
+    grid-column: span 2;
+}
+
+.mq-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.mq-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mq-badge {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: 800;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.mq-title h3 {
+    font-size: 0.85rem;
+    color: #f0f6fc;
+}
+
+.mq-title p {
+    font-size: 0.65rem;
+    color: #8b949e;
+}
+
+.status-pill {
+    font-size: 0.65rem;
     font-weight: 700;
-    color: #ffc107;
+    padding: 3px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.status-pill.safe { background: rgba(46, 164, 79, 0.2); color: #2ea44f; border: 1px solid #2ea44f; }
+.status-pill.warning { background: rgba(255, 193, 7, 0.2); color: #ffc107; border: 1px solid #ffc107; }
+.status-pill.danger { background: rgba(248, 81, 73, 0.2); color: #f85149; border: 1px solid #f85149; }
+
+.unit-compare-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(22, 27, 34, 0.6);
+    border-radius: 6px;
+    padding: 10px;
     margin-bottom: 10px;
-    letter-spacing: 0.5px;
 }
 
-.ppm-card {
-    background-color: rgba(13, 17, 23, 0.95);
-    border: 1px solid rgba(255, 193, 7, 0.3);
+.unit-col {
+    text-align: center;
 }
 
-.sub-adc-text {
-    font-size: 0.55rem;
+.unit-name {
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.text-gabriel { color: #ffc107; }
+.text-guapo { color: #58a6ff; }
+
+.val-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+}
+
+.ppm-val {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.val-display small {
+    font-size: 0.65rem;
+    color: #ffc107;
+}
+
+.adc-sub {
+    font-size: 0.6rem;
     color: #6e7681;
-    margin-top: 3px;
+    display: block;
+}
+
+.vs-divider {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #484f58;
+}
+
+.mq-footer-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    color: #8b949e;
+    border-top: 1px dashed #21262d;
+    padding-top: 8px;
+}
+
+.info-item span {
+    margin-right: 4px;
 }
 
 /* DRIFT CONTAINER DI BAWAH SENSOR */
@@ -504,7 +622,7 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* MISI 2: DATE FILTER BAR STYLING */
+/* DATE FILTER BAR STYLING */
 .date-filter-bar {
     display: flex;
     align-items: center;
