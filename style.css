@@ -1,8 +1,252 @@
-/* EXTENSION UNTUK OVEN MANUAL ANALYSIS & SINGLE BOARD DESIGN */
+/* =============================================================
+   1. BASE & RESET STYLES
+   ============================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* =============================================================
+   2. DASHBOARD LAYOUT & SIDEBAR
+   ============================================================= */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #161b22;
+    border-right: 1px solid #21262d;
+    padding: 20px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 15px;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: #ffc107;
+}
+
+.logo-area h1 {
+    font-size: 0.95rem;
+    color: #ffc107;
+    letter-spacing: 1px;
+}
+
+.logo-area h2 {
+    font-size: 1.1rem;
+    color: #f0f6fc;
+}
+
+.logo-area p {
+    font-size: 0.7rem;
+    color: #8b949e;
+}
+
+.widget-control-box h3 {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.checklist-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: #c9d1d9;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: #ffc107;
+    width: 15px;
+    height: 15px;
+}
+
+/* =============================================================
+   3. MAIN CONTENT CONTAINER
+   ============================================================= */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =============================================================
+   4. TOP STATS BAR
+   ============================================================= */
+.top-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.stat-card {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.68rem;
+    color: #8b949e;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.stat-sub {
+    font-size: 0.68rem;
+    color: #8b949e;
+}
+
+.stat-icon {
+    font-size: 1.4rem;
+    color: #30363d;
+}
+
+.time-card {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.time-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffc107;
+    display: block;
+}
+
+/* Color Helpers */
+.text-success { color: #3fb950 !important; }
+.text-warning { color: #ffc107 !important; }
+.text-danger { color: #f85149 !important; }
+.text-right { text-align: right; }
+
+/* =============================================================
+   5. OVERVIEW LIVE SENSOR PANEL
+   ============================================================= */
+.unit-panel {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 10px;
+}
+
+.panel-header h2 {
+    font-size: 0.95rem;
+    color: #f0f6fc;
+}
+
+.sensor-groups-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sensor-group-box {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.group-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffc107;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Grid Sensor MQ 8 Column */
 .sensors-grid.mq-grid-8 {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 8px;
+}
+
+.sensor-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    padding: 8px 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sensor-name {
+    font-size: 0.65rem;
+    color: #8b949e;
+    font-weight: 600;
+}
+
+.sensor-val {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f0f6fc;
+    margin: 2px 0;
+}
+
+.sensor-unit {
+    font-size: 0.6rem;
+    color: #8b949e;
 }
 
 .sensor-groups-two-col {
@@ -11,7 +255,15 @@
     gap: 12px;
 }
 
-/* OVEN ANALYSIS SECTION STYLING */
+.sensors-grid.temp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* =============================================================
+   6. OVEN ANALYSIS SECTION
+   ============================================================= */
 .oven-analysis-container {
     background-color: rgba(22, 27, 34, 0.85);
     border: 1px solid #ffc107;
@@ -20,6 +272,16 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.section-title-bar h2 {
+    font-size: 0.95rem;
+    color: #f0f6fc;
+}
+
+.section-title-bar .sub-title {
+    font-size: 0.7rem;
+    color: #8b949e;
 }
 
 .oven-control-panel {
@@ -76,6 +338,20 @@
     font-weight: 700;
 }
 
+.btn-yellow {
+    background: #ffc107;
+    color: #000;
+    border: none;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-yellow:hover {
+    background: #e0a800;
+}
+
 .oven-grid-layout {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
@@ -87,6 +363,42 @@
     border: 1px solid #21262d;
     border-radius: 6px;
     padding: 12px;
+}
+
+.panel-subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.panel-subheader h3 {
+    font-size: 0.8rem;
+    color: #c9d1d9;
+}
+
+.mock-select {
+    background: #161b22;
+    border: 1px solid #30363d;
+    color: #ffc107;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.svg-chart {
+    width: 100%;
+    height: 160px;
+    background: #0d1117;
+    border-radius: 4px;
+}
+
+.chart-timeline {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: #8b949e;
+    margin-top: 4px;
 }
 
 .temp-summary-list {
@@ -126,6 +438,171 @@
     color: #ffffff;
 }
 
-.active-sheet-btn {
+/* =============================================================
+   7. DETAIL MQ SERIES CARDS
+   ============================================================= */
+.mq-details-wrapper {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.mq-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.mq-detail-card {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.mq-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mq-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mq-badge {
+    background: #21262d;
+    color: #ffc107;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.mq-title h3 {
+    font-size: 0.8rem;
+    color: #f0f6fc;
+}
+
+.status-pill {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.status-pill.safe {
+    background: rgba(63, 185, 80, 0.15);
+    color: #3fb950;
+    border: 1px solid rgba(63, 185, 80, 0.3);
+}
+
+.val-display {
+    margin-top: 10px;
+}
+
+.ppm-val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffc107;
+}
+
+/* =============================================================
+   8. DATA SHEET TABLE SECTION
+   ============================================================= */
+.table-container {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.btn-outline.active-sheet-btn {
     border-color: #ffc107;
+    color: #ffc107;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    text-align: left;
+}
+
+th, td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #21262d;
+    white-space: nowrap;
+}
+
+th {
+    background: #0d1117;
+    color: #8b949e;
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: rgba(110, 118, 129, 0.1);
+}
+
+/* =============================================================
+   9. FOOTER
+   ============================================================= */
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #8b949e;
+    padding-top: 10px;
+    border-top: 1px solid #21262d;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 1100px) {
+    .sensors-grid.mq-grid-8 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .oven-grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .sensor-groups-two-col {
+        grid-template-columns: 1fr;
+    }
+    .sensors-grid.mq-grid-8 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
