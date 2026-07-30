@@ -120,6 +120,17 @@ body {
     color: #484f58;
 }
 
+.sheet-select-dropdown {
+    background-color: #12161c;
+    border: 1px solid #ffc107;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px;
+    border-radius: 4px;
+    margin: 4px 0;
+}
+
 .time-card {
     background-color: rgba(22, 27, 34, 0.95);
     border: 1px solid #ffc107;
@@ -138,10 +149,13 @@ body {
     display: block;
 }
 
-/* BOX UNIT SENSOR GABRIEL & GUAPO */
+/* OVERVIEW SENSOR GRID */
+.single-board-grid {
+    grid-template-columns: 1fr !important;
+}
+
 .units-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
     transition: all 0.3s ease;
 }
@@ -172,7 +186,7 @@ body {
     font-weight: 600;
 }
 
-/* SUB-PANEL KELOMPOK SENSOR */
+/* SENSOR GROUP BOX */
 .sensor-groups-wrapper {
     display: flex;
     flex-direction: column;
@@ -208,12 +222,12 @@ body {
     gap: 8px;
 }
 
-.mq-grid {
-    grid-template-columns: repeat(5, 1fr);
+.mq-grid-updated {
+    grid-template-columns: repeat(8, 1fr);
 }
 
-.temp-grid {
-    grid-template-columns: repeat(2, 1fr);
+.temp-grid-updated {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .sensor-box {
@@ -225,6 +239,11 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.highlight-single {
+    border: 1px solid #ffc107 !important;
+    background-color: rgba(255, 193, 7, 0.05);
 }
 
 .sensor-name {
@@ -262,7 +281,7 @@ body {
     font-weight: 600;
 }
 
-/* SECTION BARU: STYLING DETAIL SENSOR MQ INDIVIDUAL */
+/* SECTION DETAIL MQ INDIVIDUAL */
 .mq-details-wrapper {
     background-color: rgba(22, 27, 34, 0.85);
     border: 1px solid #ffc107;
@@ -355,6 +374,20 @@ body {
 .status-pill.warning { background: rgba(255, 193, 7, 0.2); color: #ffc107; border: 1px solid #ffc107; }
 .status-pill.danger { background: rgba(248, 81, 73, 0.2); color: #f85149; border: 1px solid #f85149; }
 
+.unit-single-box {
+    text-align: center;
+    background: rgba(22, 27, 34, 0.6);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.ppm-val-large {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffc107;
+}
+
 .unit-compare-box {
     display: flex;
     align-items: center;
@@ -365,49 +398,16 @@ body {
     margin-bottom: 10px;
 }
 
-.unit-col {
-    text-align: center;
-}
-
-.unit-name {
-    font-size: 0.65rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 4px;
-}
-
+.unit-col { text-align: center; }
+.unit-name { font-size: 0.65rem; font-weight: 700; display: block; margin-bottom: 4px; }
 .text-gabriel { color: #ffc107; }
 .text-guapo { color: #58a6ff; }
 
-.val-display {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 4px;
-}
-
-.ppm-val {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.val-display small {
-    font-size: 0.65rem;
-    color: #ffc107;
-}
-
-.adc-sub {
-    font-size: 0.6rem;
-    color: #6e7681;
-    display: block;
-}
-
-.vs-divider {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: #484f58;
-}
+.val-display { display: flex; align-items: baseline; justify-content: center; gap: 4px; }
+.ppm-val { font-size: 1.3rem; font-weight: 700; color: #ffffff; }
+.val-display small { font-size: 0.65rem; color: #ffc107; }
+.adc-sub { font-size: 0.6rem; color: #6e7681; display: block; }
+.vs-divider { font-size: 0.7rem; font-weight: 800; color: #484f58; }
 
 .mq-footer-info {
     display: flex;
@@ -418,14 +418,10 @@ body {
     padding-top: 8px;
 }
 
-.info-item span {
-    margin-right: 4px;
-}
-
-/* DRIFT CONTAINER DI BAWAH SENSOR */
+/* DRIFT CONTAINER */
 .drift-sub-panel {
     display: grid;
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: 140px 1fr;
     background-color: rgba(13, 17, 23, 0.7);
     border: 1px solid #21262d;
     border-radius: 6px;
@@ -441,46 +437,24 @@ body {
     padding-right: 10px;
 }
 
-.drift-title {
-    font-size: 0.6rem;
-    color: #8b949e;
-    font-weight: 600;
-}
-
-.drift-value {
-    font-size: 1.4rem;
-    font-weight: 700;
-}
+.drift-title { font-size: 0.6rem; color: #8b949e; font-weight: 600; }
+.drift-value { font-size: 1.4rem; font-weight: 700; }
 
 .drift-table-mock {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 4px;
     text-align: center;
 }
 
-.drift-table-mock div {
-    display: flex;
-    flex-direction: column;
-}
+.drift-table-mock div { display: flex; flex-direction: column; }
+.drift-table-mock span { font-size: 0.75rem; font-weight: 600; color: #ffc107; }
+.drift-table-mock small { font-size: 0.55rem; color: #6e7681; margin-top: 2px; }
 
-.drift-table-mock span {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #ffc107;
-}
-
-.drift-table-mock small {
-    font-size: 0.5rem;
-    color: #6e7681;
-    margin-top: 2px;
-}
-
-/* MIDDLE GRID (CHART & STATS) */
-.middle-grid {
+/* MIDDLE GRID */
+.middle-grid-single {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr;
 }
 
 .grid-panel {
@@ -490,22 +464,11 @@ body {
     padding: 16px;
 }
 
-.grid-panel h3 {
-    font-size: 0.8rem;
-    color: #8b949e;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-}
-
 .panel-subheader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-}
-
-.panel-subheader h3 {
-    margin-bottom: 0;
 }
 
 .mock-select {
@@ -524,50 +487,76 @@ body {
     padding: 10px;
 }
 
-.svg-chart {
-    width: 100%;
-    height: 140px;
-    display: block;
+.svg-chart { width: 100%; height: 140px; display: block; }
+.chart-timeline { display: flex; justify-content: space-between; font-size: 0.65rem; color: #6e7681; margin-top: 6px; }
+
+/* SECTION STATISTIK BARU */
+.stats-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
-.chart-timeline {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.65rem;
-    color: #6e7681;
-    margin-top: 6px;
-    padding: 0 5px;
-}
-
-.stats-list {
+.stat-box-item {
+    background: rgba(13, 17, 23, 0.8);
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
-.stat-row {
+.stat-box-item i { font-size: 1.2rem; color: #ffc107; margin-bottom: 6px; }
+.stat-box-label { font-size: 0.7rem; color: #8b949e; }
+.stat-box-val { font-size: 1.3rem; font-weight: 700; margin-top: 4px; }
+
+/* OVEN STATS SECTION */
+.oven-temp-filter-bar {
     display: flex;
     align-items: center;
-    font-size: 0.75rem;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
 }
 
-.stat-row i {
-    width: 20px;
-    color: #6e7681;
+.custom-select {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #ffc107;
+    padding: 4px 10px;
+    border-radius: 4px;
 }
 
-.stat-row span {
-    flex-grow: 1;
-    color: #c9d1d9;
+.oven-stats-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
 }
 
-.stat-line {
-    height: 1px;
-    background-color: #21262d;
-    margin: 2px 0;
+.oven-stat-card {
+    background: rgba(13, 17, 23, 0.8);
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
 }
 
-/* LOWER DATA TABLE STYLING */
+.stat-title { font-size: 0.65rem; color: #8b949e; font-weight: 600; display: block; }
+.stat-val-highlight { font-size: 1.4rem; font-weight: 800; display: block; margin: 4px 0; }
+.oven-stat-card small { font-size: 0.6rem; color: #6e7681; }
+
+.stats-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+.stats-table th { background-color: #161b22; color: #8b949e; padding: 8px; border: 1px solid #21262d; }
+.stats-table td { padding: 8px; border: 1px solid #21262d; text-align: center; }
+
+.badge-up { background: rgba(248, 81, 73, 0.2); color: #f85149; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+.badge-down { background: rgba(46, 164, 79, 0.2); color: #2ea44f; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+.badge-neutral { background: rgba(255, 193, 7, 0.2); color: #ffc107; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+
+/* LOWER DATA TABLE */
 .table-container {
     background-color: rgba(22, 27, 34, 0.85);
     border: 1px solid #252a33;
@@ -575,23 +564,9 @@ body {
     padding: 16px;
 }
 
-.table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.table-header h3 {
-    font-size: 0.8rem;
-    color: #8b949e;
-}
-
-.table-actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
+.table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.table-header h3 { font-size: 0.8rem; color: #8b949e; }
+.table-actions { display: flex; gap: 8px; align-items: center; }
 
 .btn {
     background: transparent;
@@ -608,21 +583,11 @@ body {
     text-decoration: none;
 }
 
-.btn-yellow {
-    background-color: #ffc107;
-    border-color: #ffc107;
-    color: #000000;
-}
+.btn-yellow { background-color: #ffc107; border-color: #ffc107; color: #000000; }
+.btn-yellow:hover { background-color: #e0a800; }
+.btn-outline:hover { background-color: rgba(255, 255, 255, 0.05); }
 
-.btn-yellow:hover {
-    background-color: #e0a800;
-}
-
-.btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* DATE FILTER BAR STYLING */
+/* DATE FILTER */
 .date-filter-bar {
     display: flex;
     align-items: center;
@@ -636,21 +601,8 @@ body {
     flex-wrap: wrap;
 }
 
-.date-filter-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #c9d1d9;
-}
-
-.date-buttons-group {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
+.date-filter-title { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #c9d1d9; }
+.date-buttons-group { display: flex; gap: 6px; flex-wrap: wrap; }
 .date-btn {
     background-color: #161b22;
     border: 1px solid #30363d;
@@ -659,70 +611,15 @@ body {
     padding: 4px 10px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
+.date-btn.active { background-color: #ffc107; color: #000000; font-weight: 700; }
+.custom-date-input { background-color: #161b22; border: 1px solid #30363d; color: #ffc107; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; }
 
-.date-btn:hover {
-    color: #ffffff;
-    border-color: #ffc107;
-}
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.7rem; text-align: left; }
+th, td { padding: 8px 6px; border: 1px solid #21262d; }
+th { background-color: #161b22; color: #8b949e; font-weight: 600; }
 
-.date-btn.active {
-    background-color: #ffc107;
-    color: #000000;
-    border-color: #ffc107;
-    font-weight: 700;
-}
-
-.custom-date-input {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    color: #ffc107;
-    font-size: 0.7rem;
-    padding: 3px 8px;
-    border-radius: 4px;
-    outline: none;
-}
-
-.table-scroll {
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.7rem;
-    text-align: left;
-}
-
-th, td {
-    padding: 8px 6px;
-    border: 1px solid #21262d;
-}
-
-th {
-    background-color: #161b22;
-    color: #8b949e;
-    font-weight: 600;
-}
-
-th small {
-    font-weight: 400;
-    color: #6e7681;
-}
-
-.bg-gabriel { background-color: rgba(212, 167, 44, 0.1); color: #ffc107; }
-.bg-guapo { background-color: rgba(56, 139, 253, 0.1); color: #58a6ff; }
-
-tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.02);
-}
-
-tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* UTILITIES */
 .text-success { color: #2ea44f !important; }
 .text-warning { color: #ffc107 !important; }
 .text-danger { color: #f85149 !important; }
@@ -738,7 +635,6 @@ tbody tr:hover {
     margin-top: 10px;
 }
 
-/* Widget Checklist Box di Sidebar */
 .widget-control-box {
     background-color: rgba(28, 33, 40, 0.6);
     border: 1px solid #252a33;
@@ -746,64 +642,10 @@ tbody tr:hover {
     padding: 12px;
 }
 
-.widget-control-box h3 {
-    font-size: 0.75rem;
-    color: #8b949e;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-}
+.widget-control-box h3 { font-size: 0.75rem; color: #8b949e; margin-bottom: 8px; }
+.checklist-group { display: flex; flex-direction: column; gap: 8px; }
+.checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #c9d1d9; cursor: pointer; }
+.checkbox-label input[type="checkbox"] { cursor: pointer; accent-color: #ffc107; }
 
-.checklist-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    color: #c9d1d9;
-    cursor: pointer;
-}
-
-.checkbox-label input[type="checkbox"] {
-    cursor: pointer;
-    accent-color: #ffc107;
-}
-
-/* Utility Class untuk Sembunyi */
-.hidden-feature {
-    display: none !important;
-}
-
-.main-sheet-scroll {
-    max-height: 350px;
-    overflow-y: auto;
-    overflow-x: auto;
-}
-
-/* Tambahan Styling untuk Tab Input Oven & Filter */
-.date-btn {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    color: #8b949e;
-    font-size: 0.75rem;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.date-btn:hover {
-    color: #ffffff;
-    border-color: #ffc107;
-}
-
-.date-btn.active {
-    background-color: #ffc107;
-    color: #000000;
-    border-color: #ffc107;
-    font-weight: 700;
-}
+.hidden-feature { display: none !important; }
+.main-sheet-scroll { max-height: 350px; overflow-y: auto; overflow-x: auto; }
