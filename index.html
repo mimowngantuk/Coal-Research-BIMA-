@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coal Smoke Monitoring System</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome untuk icon-icon dashboard -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -22,7 +21,19 @@
                 </div>
             </div>
 
-            <!-- WIDGET CHECKLIST (KONTROL TAMPILAN) -->
+            <!-- KONTROL INPUT OVEN MANUAL (BARU) -->
+            <div class="widget-control-box">
+                <h3><i class="fa-solid fa-fire-burner text-warning"></i> EXPERIMENT OVEN</h3>
+                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                    <label style="font-size: 0.7rem; color: #8b949e;">Target Suhu Oven (°C):</label>
+                    <input type="number" id="input-target-oven-temp" placeholder="Contoh: 150" style="padding: 6px; border-radius: 4px; border: 1px solid #30363d; background: #161b22; color: #fff; font-size: 0.8rem;">
+                    <button onclick="saveOvenExperiment()" class="btn btn-yellow" style="width: 100%; justify-content: center; margin-top: 4px;">
+                        <i class="fa-solid fa-floppy-disk"></i> SIMPAN DATA OVEN
+                    </button>
+                </div>
+            </div>
+
+            <!-- WIDGET CHECKLIST -->
             <div class="widget-control-box">
                 <h3>KONTROL TAMPILAN</h3>
                 <div class="checklist-group">
@@ -32,19 +43,11 @@
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-gabriel" checked>
-                        <span>Gabriel Panel</span>
+                        <span>Board 1 (Gabriel)</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-guapo" checked>
-                        <span>Guapo Panel</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="toggle-mq-sections" checked>
-                        <span>Section Detail MQ Series</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="toggle-middle" checked>
-                        <span>Grafik & Statistika</span>
+                        <span>Board 2 (Guapo)</span>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" id="toggle-sheet" checked>
@@ -104,198 +107,74 @@
                 </div>
             </div>
 
-            <!-- PANEL OVERVIEW GABRIEL & GUAPO -->
+            <!-- PANEL OVERVIEW BOARD 1 & BOARD 2 -->
             <div id="section-panels" class="units-grid">
                 
-                <!-- GABRIEL PANEL -->
+                <!-- BOARD 1 (GABRIEL) -->
                 <div id="panel-gabriel" class="unit-panel">
                     <div class="panel-header">
-                        <h2>GABRIEL 🦊</h2>
-                        <span id="gabriel-status" class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Connected</span>
+                        <h2>BOARD 1 (GABRIEL) 🦊</h2>
+                        <span class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Active</span>
                     </div>
-                    
                     <div class="sensor-groups-wrapper">
-                        <!-- KELOMPOK 1: MQ SENSORS (RAW ADC) -->
                         <div class="sensor-group-box">
-                            <div class="group-title"><i class="fa-solid fa-wind"></i> SENSOR GAS (MQ SERIES - ADC)</div>
+                            <div class="group-title"><i class="fa-solid fa-wind"></i> SENSOR BOARD 1</div>
                             <div class="sensors-grid mq-grid">
                                 <div class="sensor-box">
                                     <span class="sensor-name">MQ-2</span>
-                                    <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
                                     <span id="gabriel-mq2" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
                                 <div class="sensor-box">
-                                    <span class="sensor-name">MQ-4</span>
-                                    <i class="fa-solid fa-fire sensor-icon text-warning"></i>
-                                    <span id="gabriel-mq4" class="sensor-val">--</span>
+                                    <span class="sensor-name">MQ4_1</span>
+                                    <span id="gabriel-mq4_1" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
                                 <div class="sensor-box">
-                                    <span class="sensor-name">MQ-7</span>
-                                    <span class="sensor-gas">CO</span>
-                                    <span id="gabriel-mq7" class="sensor-val">--</span>
+                                    <span class="sensor-name">MQ7_1</span>
+                                    <span id="gabriel-mq7_1" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
                                 <div class="sensor-box">
-                                    <span class="sensor-name">MQ-135</span>
-                                    <i class="fa-solid fa-smog sensor-icon text-warning"></i>
-                                    <span id="gabriel-mq135" class="sensor-val">--</span>
+                                    <span class="sensor-name">MQ135_1</span>
+                                    <span id="gabriel-mq135_1" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
                                 <div class="sensor-box">
                                     <span class="sensor-name">MQ-136</span>
-                                    <span class="sensor-gas">H₂S</span>
                                     <span id="gabriel-mq136" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- KELOMPOK 2: SUHU & KELEMBAPAN -->
-                        <div class="sensor-group-box">
-                            <div class="group-title">
-                                <i class="fa-solid fa-temperature-high"></i> SENSOR SUHU & KELEMBAPAN 
-                                <small style="font-size: 0.7rem; color: #8b949e; margin-left: 6px; text-transform: none;">(Filter Box)</small>
-                            </div>
-                            <div class="sensors-grid temp-grid">
-                                <div class="sensor-box">
-                                    <span class="sensor-name">DHT22</span>
-                                    <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
-                                    <span id="gabriel-dht22" class="sensor-val">--</span>
-                                    <span class="sensor-unit">% RH</span>
-                                    <span class="sensor-status text-success">Normal</span>
-                                </div>
-                                <div class="sensor-box">
-                                    <span class="sensor-name">DS18B20</span>
-                                    <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
-                                    <span id="gabriel-ds18b20" class="sensor-val">--</span>
-                                    <span class="sensor-unit">°C</span>
-                                    <span class="sensor-status text-success">Normal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DRIFT SUB-PANEL -->
-                    <div class="drift-sub-panel">
-                        <div class="drift-main">
-                            <span class="drift-title">DRIFT (vs GUAPO)</span>
-                            <span id="gabriel-avg-drift" class="drift-value text-warning">--</span>
-                            <span class="drift-sub">Average Drift</span>
-                        </div>
-                        <div class="drift-details">
-                            <span class="drift-title">PER-SENSOR DRIFT (%)</span>
-                            <div class="drift-table-mock">
-                                <div><span id="drift-gabriel-mq2">--</span><small>MQ-2</small></div>
-                                <div><span id="drift-gabriel-mq4">--</span><small>MQ-4</small></div>
-                                <div><span id="drift-gabriel-mq7">--</span><small>MQ-7</small></div>
-                                <div><span id="drift-gabriel-mq135">--</span><small>MQ-135</small></div>
-                                <div><span id="drift-gabriel-mq136">--</span><small>MQ-136</small></div>
-                                <div><span id="drift-gabriel-dht22">--</span><small>DHT22</small></div>
-                                <div><span id="drift-gabriel-ds18b20">--</span><small>DS18B20</small></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GUAPO PANEL -->
+                <!-- BOARD 2 (GUAPO) -->
                 <div id="panel-guapo" class="unit-panel">
                     <div class="panel-header">
-                        <h2>GUAPO 🐊</h2>
-                        <span id="guapo-status" class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Connected</span>
+                        <h2>BOARD 2 (GUAPO) 🐊</h2>
+                        <span class="status-indicator text-success"><i class="fa-solid fa-circle-check"></i> Active</span>
                     </div>
-                    
                     <div class="sensor-groups-wrapper">
-                        <!-- KELOMPOK 1: MQ SENSORS (RAW ADC) -->
                         <div class="sensor-group-box">
-                            <div class="group-title"><i class="fa-solid fa-wind"></i> SENSOR GAS (MQ SERIES - ADC)</div>
-                            <div class="sensors-grid mq-grid">
+                            <div class="group-title"><i class="fa-solid fa-wind"></i> SENSOR BOARD 2</div>
+                            <div class="sensors-grid mq-grid" style="grid-template-columns: repeat(3, 1fr);">
                                 <div class="sensor-box">
-                                    <span class="sensor-name">MQ-2</span>
-                                    <i class="fa-solid fa-cloud sensor-icon text-warning"></i>
-                                    <span id="guapo-mq2" class="sensor-val">--</span>
+                                    <span class="sensor-name">MQ4_2</span>
+                                    <span id="guapo-mq4_2" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
                                 <div class="sensor-box">
-                                    <span class="sensor-name">MQ-4</span>
-                                    <i class="fa-solid fa-fire sensor-icon text-warning"></i>
-                                    <span id="guapo-mq4" class="sensor-val">--</span>
+                                    <span class="sensor-name">MQ7_2</span>
+                                    <span id="guapo-mq7_2" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
                                 <div class="sensor-box">
-                                    <span class="sensor-name">MQ-7</span>
-                                    <span class="sensor-gas">CO</span>
-                                    <span id="guapo-mq7" class="sensor-val">--</span>
+                                    <span class="sensor-name">MQ135_2</span>
+                                    <span id="guapo-mq135_2" class="sensor-val">--</span>
                                     <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
                                 </div>
-                                <div class="sensor-box">
-                                    <span class="sensor-name">MQ-135</span>
-                                    <i class="fa-solid fa-smog sensor-icon text-warning"></i>
-                                    <span id="guapo-mq135" class="sensor-val">--</span>
-                                    <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
-                                </div>
-                                <div class="sensor-box">
-                                    <span class="sensor-name">MQ-136</span>
-                                    <span class="sensor-gas">H₂S</span>
-                                    <span id="guapo-mq136" class="sensor-val">--</span>
-                                    <span class="sensor-unit">ADC</span>
-                                    <span class="sensor-status text-success">Normal</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- KELOMPOK 2: SUHU & KELEMBAPAN -->
-                        <div class="sensor-group-box">
-                            <div class="group-title">
-                                <i class="fa-solid fa-temperature-high"></i> SENSOR SUHU & KELEMBAPAN 
-                                <small style="font-size: 0.7rem; color: #8b949e; margin-left: 6px; text-transform: none;">(Sensor Chamber)</small>
-                            </div>
-                            <div class="sensors-grid temp-grid">
-                                <div class="sensor-box">
-                                    <span class="sensor-name">DHT22</span>
-                                    <i class="fa-solid fa-droplet sensor-icon text-warning"></i>
-                                    <span id="guapo-dht22" class="sensor-val">--</span>
-                                    <span class="sensor-unit">% RH</span>
-                                    <span class="sensor-status text-success">Normal</span>
-                                </div>
-                                <div class="sensor-box">
-                                    <span class="sensor-name">DS18B20</span>
-                                    <i class="fa-solid fa-temperature-half sensor-icon text-warning"></i>
-                                    <span id="guapo-ds18b20" class="sensor-val">--</span>
-                                    <span class="sensor-unit">°C</span>
-                                    <span class="sensor-status text-success">Normal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DRIFT SUB-PANEL -->
-                    <div class="drift-sub-panel">
-                        <div class="drift-main">
-                            <span class="drift-title">DRIFT (vs GABRIEL)</span>
-                            <span id="guapo-avg-drift" class="drift-value text-success">--</span>
-                            <span class="drift-sub">Average Drift</span>
-                        </div>
-                        <div class="drift-details">
-                            <span class="drift-title">PER-SENSOR DRIFT (%)</span>
-                            <div class="drift-table-mock">
-                                <div><span id="drift-guapo-mq2">--</span><small>MQ-2</small></div>
-                                <div><span id="drift-guapo-mq4">--</span><small>MQ-4</small></div>
-                                <div><span id="drift-guapo-mq7">--</span><small>MQ-7</small></div>
-                                <div><span id="drift-guapo-mq135">--</span><small>MQ-135</small></div>
-                                <div><span id="drift-guapo-mq136">--</span><small>MQ-136</small></div>
-                                <div><span id="drift-guapo-dht22">--</span><small>DHT22</small></div>
-                                <div><span id="drift-guapo-ds18b20">--</span><small>DS18B20</small></div>
                             </div>
                         </div>
                     </div>
@@ -303,341 +182,35 @@
 
             </div>
 
-            <!-- SECTION BARU: INFORMASI DETAIL SETIAP SENSOR MQ -->
-            <div id="section-mq-details" class="mq-details-wrapper">
-                <div class="section-title-bar">
-                    <h2><i class="fa-solid fa-microchip text-warning"></i> DETAIL ANALISIS INDIVIDUAL SENSOR MQ SERIES</h2>
-                    <span class="sub-title">Perbandingan Gabriel vs Guapo, Hasil Konversi PPM & Drift Per-Sensor</span>
-                </div>
-
-                <div class="mq-cards-grid">
-                    <!-- SECTION MQ-2 -->
-                    <div class="mq-detail-card">
-                        <div class="mq-card-header">
-                            <div class="mq-title">
-                                <span class="mq-badge">MQ-2</span>
-                                <div>
-                                    <h3>Asap, LPG, Propana & Methane</h3>
-                                    <p>General Smoke & Flammable Gas Sensor</p>
-                                </div>
-                            </div>
-                            <span id="mq2-status-pill" class="status-pill safe">Aman</span>
-                        </div>
-                        <div class="mq-card-body">
-                            <div class="unit-compare-box">
-                                <div class="unit-col">
-                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
-                                    <div class="val-display">
-                                        <span id="sec-gabriel-mq2-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-gabriel-mq2-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                                <div class="vs-divider">VS</div>
-                                <div class="unit-col">
-                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
-                                    <div class="val-display">
-                                        <span id="sec-guapo-mq2-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-guapo-mq2-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                            </div>
-                            <div class="mq-footer-info">
-                                <div class="info-item">
-                                    <span>Drift Nilai ADC:</span>
-                                    <strong id="sec-mq2-drift">--%</strong>
-                                </div>
-                                <div class="info-item">
-                                    <span>Range Ideal:</span>
-                                    <strong>200 - 10,000 ppm</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SECTION MQ-4 -->
-                    <div class="mq-detail-card">
-                        <div class="mq-card-header">
-                            <div class="mq-title">
-                                <span class="mq-badge">MQ-4</span>
-                                <div>
-                                    <h3>Metana (CH₄) & Gas Alam</h3>
-                                    <p>CNG / Natural Gas Specific Sensor</p>
-                                </div>
-                            </div>
-                            <span id="mq4-status-pill" class="status-pill safe">Aman</span>
-                        </div>
-                        <div class="mq-card-body">
-                            <div class="unit-compare-box">
-                                <div class="unit-col">
-                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
-                                    <div class="val-display">
-                                        <span id="sec-gabriel-mq4-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-gabriel-mq4-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                                <div class="vs-divider">VS</div>
-                                <div class="unit-col">
-                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
-                                    <div class="val-display">
-                                        <span id="sec-guapo-mq4-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-guapo-mq4-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                            </div>
-                            <div class="mq-footer-info">
-                                <div class="info-item">
-                                    <span>Drift Nilai ADC:</span>
-                                    <strong id="sec-mq4-drift">--%</strong>
-                                </div>
-                                <div class="info-item">
-                                    <span>Range Ideal:</span>
-                                    <strong>300 - 10,000 ppm</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SECTION MQ-7 -->
-                    <div class="mq-detail-card">
-                        <div class="mq-card-header">
-                            <div class="mq-title">
-                                <span class="mq-badge">MQ-7</span>
-                                <div>
-                                    <h3>Karbon Monoksida (CO)</h3>
-                                    <p>Toxic Carbon Monoxide Sensor</p>
-                                </div>
-                            </div>
-                            <span id="mq7-status-pill" class="status-pill safe">Aman</span>
-                        </div>
-                        <div class="mq-card-body">
-                            <div class="unit-compare-box">
-                                <div class="unit-col">
-                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
-                                    <div class="val-display">
-                                        <span id="sec-gabriel-mq7-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-gabriel-mq7-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                                <div class="vs-divider">VS</div>
-                                <div class="unit-col">
-                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
-                                    <div class="val-display">
-                                        <span id="sec-guapo-mq7-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-guapo-mq7-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                            </div>
-                            <div class="mq-footer-info">
-                                <div class="info-item">
-                                    <span>Drift Nilai ADC:</span>
-                                    <strong id="sec-mq7-drift">--%</strong>
-                                </div>
-                                <div class="info-item">
-                                    <span>Range Ideal:</span>
-                                    <strong>20 - 2,000 ppm</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SECTION MQ-135 -->
-                    <div class="mq-detail-card">
-                        <div class="mq-card-header">
-                            <div class="mq-title">
-                                <span class="mq-badge">MQ-135</span>
-                                <div>
-                                    <h3>Kualitas Udara, CO₂, & Amonia</h3>
-                                    <p>Air Quality & Hazardous Gas Sensor</p>
-                                </div>
-                            </div>
-                            <span id="mq135-status-pill" class="status-pill safe">Aman</span>
-                        </div>
-                        <div class="mq-card-body">
-                            <div class="unit-compare-box">
-                                <div class="unit-col">
-                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
-                                    <div class="val-display">
-                                        <span id="sec-gabriel-mq135-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-gabriel-mq135-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                                <div class="vs-divider">VS</div>
-                                <div class="unit-col">
-                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
-                                    <div class="val-display">
-                                        <span id="sec-guapo-mq135-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-guapo-mq135-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                            </div>
-                            <div class="mq-footer-info">
-                                <div class="info-item">
-                                    <span>Drift Nilai ADC:</span>
-                                    <strong id="sec-mq135-drift">--%</strong>
-                                </div>
-                                <div class="info-item">
-                                    <span>Range Ideal:</span>
-                                    <strong>10 - 1,000 ppm</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SECTION MQ-136 -->
-                    <div class="mq-detail-card mq-card-wide">
-                        <div class="mq-card-header">
-                            <div class="mq-title">
-                                <span class="mq-badge">MQ-136</span>
-                                <div>
-                                    <h3>Hidrogen Sulfida (H₂S)</h3>
-                                    <p>Hydrogen Sulfide Gas Sensor (Coal Gasification Indicator)</p>
-                                </div>
-                            </div>
-                            <span id="mq136-status-pill" class="status-pill safe">Aman</span>
-                        </div>
-                        <div class="mq-card-body">
-                            <div class="unit-compare-box">
-                                <div class="unit-col">
-                                    <span class="unit-name text-gabriel">GABRIEL 🦊</span>
-                                    <div class="val-display">
-                                        <span id="sec-gabriel-mq136-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-gabriel-mq136-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                                <div class="vs-divider">VS</div>
-                                <div class="unit-col">
-                                    <span class="unit-name text-guapo">GUAPO 🐊</span>
-                                    <div class="val-display">
-                                        <span id="sec-guapo-mq136-ppm" class="ppm-val">--</span> <small>PPM</small>
-                                    </div>
-                                    <span id="sec-guapo-mq136-adc" class="adc-sub">ADC: --</span>
-                                </div>
-                            </div>
-                            <div class="mq-footer-info">
-                                <div class="info-item">
-                                    <span>Drift Nilai ADC:</span>
-                                    <strong id="sec-mq136-drift">--%</strong>
-                                </div>
-                                <div class="info-item">
-                                    <span>Range Ideal:</span>
-                                    <strong>1 - 200 ppm</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- GRID TENGAH: CHART & STATISTICS -->
-            <div id="section-middle" class="middle-grid">
-                <!-- PANEL GRAFIK -->
-                <div class="grid-panel chart-panel">
-                    <div class="panel-subheader">
-                        <h3>LIVE COMPARISON (ALL SENSORS)</h3>
-                        <select id="sensor-selector" class="mock-select">
-                            <option value="mq7">MQ-7 (CO)</option>
-                            <option value="ds18b20">DS18B20 (°C)</option>
-                            <option value="dht22">DHT22 (%RH)</option>
-                            <option value="mq2">MQ-2 (ADC)</option>
-                            <option value="mq4">MQ-4 (ADC)</option>
-                            <option value="mq135">MQ-135 (ADC)</option>
-                            <option value="mq136">MQ-136 (ADC)</option>
-                        </select>
-                    </div>
-                    <div class="mock-chart-container">
-                        <svg viewBox="0 0 500 200" class="svg-chart">
-                            <line x1="0" y1="40" x2="500" y2="40" stroke="#2a2e35" stroke-dasharray="4"/>
-                            <line x1="0" y1="80" x2="500" y2="80" stroke="#2a2e35" stroke-dasharray="4"/>
-                            <line x1="0" y1="120" x2="500" y2="120" stroke="#2a2e35" stroke-dasharray="4"/>
-                            <line x1="0" y1="160" x2="500" y2="160" stroke="#2a2e35" stroke-dasharray="4"/>
-                            <path id="chart-path-gabriel" d="" fill="none" stroke="#ffc107" stroke-width="2"/>
-                            <path id="chart-path-guapo" d="" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="2"/>
-                        </svg>
-                        <div id="chart-timeline" class="chart-timeline">
-                            <span>--:--</span><span>--:--</span><span>--:--</span><span>--:--</span><span>--:--</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STATISTIK -->
-                <div class="grid-panel layout-stats-wide">
-                    <h3>SYSTEM STATISTICS (TODAY)</h3>
-                    <div class="stats-list">
-                        <div class="stat-row"><i class="fa-regular fa-clock"></i> <span>Data Count (Gabriel)</span> <strong id="stat-count-gabriel">0</strong></div>
-                        <div class="stat-row"><i class="fa-regular fa-clock"></i> <span>Data Count (Guapo)</span> <strong id="stat-count-guapo">0</strong></div>
-                        <div class="stat-line"></div>
-                        <div class="stat-row"><i class="fa-solid fa-chart-simple"></i> <span>Total Data Points</span> <strong id="stat-total-points">0</strong></div>
-                        <div class="stat-line"></div>
-                        <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Avg Drift (Overall)</span> <strong id="stat-overall-avg-drift" class="text-warning">-- %</strong></div>
-                        <div class="stat-row"><i class="fa-solid fa-percent"></i> <span>Max Drift (Overall)</span> <strong id="stat-overall-max-drift" class="text-warning">-- %</strong></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DATA TABLE BAWAH -->
+            <!-- DATA TABLE SECTION -->
             <div id="section-sheet" class="table-container">
                 <div class="table-header">
-                    <h3>DATA TABLE – GOOGLE SHEET LIVE FEED</h3>
+                    <h3>DATA TABEL LIVE FEED & EKSPERIMEN OVEN</h3>
                     <div class="table-actions">
-                        <a href="https://docs.google.com/spreadsheets/d/1jT6JOZUM5Q5iQ_B5FMAfcT_b4u5Vccy8v8ZCaZ1sm_k" target="_blank" class="btn btn-yellow">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> OPEN SHEET
-                        </a>
                         <button id="btn-refresh" class="btn btn-outline"><i class="fa-solid fa-rotate"></i> REFRESH</button>
                     </div>
                 </div>
 
-                <!-- FILTER PILIH TANGGAL BAWAH SECTION SHEET -->
-                <div class="date-filter-bar">
-                    <div class="date-filter-title">
-                        <i class="fa-regular fa-calendar-days text-warning"></i>
-                        <span>PILIH TANGGAL DATA:</span>
-                    </div>
-                    <div id="date-buttons-container" class="date-buttons-group">
-                        <button class="date-btn active" data-date="ALL">Semua Tanggal</button>
-                    </div>
-                    <div class="date-picker-custom">
-                        <input type="date" id="custom-date-picker" class="custom-date-input">
-                    </div>
+                <!-- TAB MONITORING SWITCHER -->
+                <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+                    <button id="tab-btn-mq" class="date-btn active" onclick="switchTab('MQ_sensor')">Sheet MQ_sensor</button>
+                    <button id="tab-btn-oven" class="date-btn" onclick="switchTab('oven_manual')">Sheet oven_manual</button>
                 </div>
                 
                 <div class="table-scroll main-sheet-scroll">
                     <table>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">WAKTU</th>
-                                <th colspan="7" class="text-center bg-gabriel">GABRIEL 🦊</th>
-                                <th colspan="7" class="text-center bg-guapo">GUAPO 🐊</th>
-                                <th rowspan="2">AVG DRIFT (%)</th>
-                            </tr>
-                            <tr>
-                                <th>DS18B20<br><small>(°C)</small></th>
-                                <th>DHT22<br><small>(%RH)</small></th>
-                                <th>MQ-2<br><small>(ADC)</small></th>
-                                <th>MQ-4<br><small>(ADC)</small></th>
-                                <th>MQ-7<br><small>(ADC)</small></th>
-                                <th>MQ-135<br><small>(ADC)</small></th>
-                                <th>MQ-136<br><small>(ADC)</small></th>
-                                
-                                <th>DS18B20<br><small>(°C)</small></th>
-                                <th>DHT22<br><small>(%RH)</small></th>
-                                <th>MQ-2<br><small>(ADC)</small></th>
-                                <th>MQ-4<br><small>(ADC)</small></th>
-                                <th>MQ-7<br><small>(ADC)</small></th>
-                                <th>MQ-135<br><small>(ADC)</small></th>
-                                <th>MQ-136<br><small>(ADC)</small></th>
-                            </tr>
+                        <thead id="table-head">
+                            <!-- Di-render dinamis oleh JS -->
                         </thead>
                         <tbody id="table-body">
                             <tr>
-                                <td colspan="17" class="text-center" style="padding: 20px;">Memuat data dari Google Sheet...</td>
+                                <td colspan="10" class="text-center" style="padding: 20px;">Memuat data...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- FOOTER -->
             <footer class="main-footer">
                 <span>© 2025 Coal Smoke Monitoring System</span>
                 <span>Gabriel 🦊 & Guapo 🐊 – Dual Redundant Monitoring Unit</span>
@@ -646,47 +219,14 @@
         </main>
     </div>
 
-    <!-- INTEGRASI APPS SCRIPT & LOGIC DASHBOARD -->
+    <!-- LOGICAL SCRIPT -->
     <script>
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo9TdjL8_Y7VMLnBTJ9pWghQmhx2dF6SR5WB1t0NdP6ZuJ3rMeXnyN0V-qWv32uc8I/exec";
 
         let historicalData = [];
-        let selectedDateFilter = "ALL";
+        let ovenData = [];
+        let currentTab = "MQ_sensor";
 
-        // Fungsi Rumus Konversi ADC MQ Sensor ke PPM
-        function adcToPpm(sensorType, adcValue) {
-            if (!adcValue || adcValue <= 0) return 0;
-            
-            const Vout = (adcValue / 1023.0) * 5.0;
-            if (Vout >= 4.95) return 9999; 
-            if (Vout <= 0.05) return 0;
-            
-            const RL = 10.0; // kOhm
-            const Rs = ((5.0 - Vout) / Vout) * RL;
-            
-            let R0 = 10.0; 
-            let a = 100.0;
-            let b = -1.5;
-
-            switch(sensorType.toLowerCase()) {
-                case 'mq2':   R0 = 9.83;  a = 574.25; b = -2.222; break;
-                case 'mq4':   R0 = 4.40;  a = 1012.7; b = -2.786; break;
-                case 'mq7':   R0 = 27.0;  a = 99.042; b = -1.518; break;
-                case 'mq135': R0 = 3.60;  a = 110.47; b = -2.862; break;
-                case 'mq136': R0 = 20.0;  a = 36.117; b = -1.674; break;
-                default:      R0 = 10.0;  a = 100.0;  b = -1.5;
-            }
-
-            const ratio = Rs / R0;
-            if (ratio <= 0) return 0;
-
-            const ppm = a * Math.pow(ratio, b);
-            
-            if (isNaN(ppm) || !isFinite(ppm)) return 0;
-            return ppm < 1 ? parseFloat(ppm.toFixed(2)) : Math.round(ppm);
-        }
-
-        // Formatting jam & tanggal
         function updateClock() {
             const now = new Date();
             document.getElementById('live-time').innerText = now.toLocaleTimeString('id-ID');
@@ -695,380 +235,140 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Bind checklist toggle di sidebar
-        const bindToggle = (checkboxId, sectionId) => {
-            const cb = document.getElementById(checkboxId);
-            const el = document.getElementById(sectionId);
-            if(cb && el) {
-                cb.addEventListener('change', function() {
-                    if (this.checked) {
-                        el.classList.remove('hidden-feature');
-                    } else {
-                        el.classList.add('hidden-feature');
-                    }
-                    updateUnitsGrid();
-                });
-            }
-        };
-
-        const updateUnitsGrid = () => {
-            const gabriel = document.getElementById('panel-gabriel');
-            const guapo = document.getElementById('panel-guapo');
-            const unitsGrid = document.getElementById('section-panels');
-
-            const gabrielVisible = gabriel && !gabriel.classList.contains('hidden-feature');
-            const guapoVisible = guapo && !guapo.classList.contains('hidden-feature');
-
-            if (!gabrielVisible && !guapoVisible) {
-                unitsGrid.classList.add('hidden-feature');
-            } else {
-                unitsGrid.classList.remove('hidden-feature');
-                if (gabrielVisible && guapoVisible) {
-                    unitsGrid.style.gridTemplateColumns = '1fr 1fr';
-                } else {
-                    unitsGrid.style.gridTemplateColumns = '1fr';
-                }
-            }
-        };
-
-        bindToggle('toggle-top-stats', 'section-top-stats');
-        bindToggle('toggle-gabriel', 'panel-gabriel');
-        bindToggle('toggle-guapo', 'panel-guapo');
-        bindToggle('toggle-mq-sections', 'section-mq-details');
-        bindToggle('toggle-middle', 'section-middle');
-        bindToggle('toggle-sheet', 'section-sheet');
-
-        // Main Data Fetcher
         async function fetchSensorData() {
             try {
+                // Fetch MQ_sensor
                 const response = await fetch(APPS_SCRIPT_URL);
-                if (!response.ok) throw new Error("HTTP error " + response.status);
+                if (response.ok) {
+                    historicalData = await response.json();
+                    if (historicalData.length > 0) {
+                        updatePanelValues(historicalData[historicalData.length - 1]);
+                    }
+                }
 
-                const resData = await response.json();
-                
-                const rows = Array.isArray(resData) ? resData : (resData.data || []);
-                if (!rows || rows.length === 0) return;
+                // Fetch oven_manual
+                const ovenRes = await fetch(`${APPS_SCRIPT_URL}?action=get_experiments`);
+                if (ovenRes.ok) {
+                    ovenData = await ovenRes.json();
+                }
 
-                historicalData = rows;
-                
-                // Update HTTP Status Bar
                 document.getElementById('stat-http').innerHTML = '200 <span class="sub-val">OK</span>';
                 document.getElementById('stat-sheet').innerHTML = 'Connected <i class="fa-regular fa-circle-check"></i>';
                 document.getElementById('stat-sheet').className = 'stat-value text-success';
                 document.getElementById('stat-last-update').innerText = new Date().toLocaleTimeString('id-ID');
 
-                const latest = rows[rows.length - 1];
-                updatePanelValues(latest);
-                populateDateButtons(rows);
-                renderFilteredTable();
-                renderChart(rows);
-                updateSystemStats(rows);
+                renderCurrentTable();
 
             } catch (err) {
-                console.error("Gagal menarik data Google Sheet:", err);
-                document.getElementById('stat-http').innerHTML = 'ERR <span class="sub-val">Fail</span>';
+                console.error("Gagal menarik data:", err);
+                document.getElementById('stat-http').innerHTML = 'ERR';
                 document.getElementById('stat-http').className = 'stat-value text-danger';
-                document.getElementById('stat-sheet').innerHTML = 'Disconnected';
-                document.getElementById('stat-sheet').className = 'stat-value text-danger';
             }
         }
 
-        // Mapping Data dari Apps Script ke Elemen UI
-        function updatePanelValues(row) {
-            const val = (v) => v !== undefined && v !== null && !isNaN(v) ? parseFloat(v) : 0;
+        function updatePanelValues(latest) {
+            document.getElementById('gabriel-mq2').innerText     = latest.mq2 || 0;
+            document.getElementById('gabriel-mq4_1').innerText   = latest.mq4_1 || 0;
+            document.getElementById('gabriel-mq7_1').innerText   = latest.mq7_1 || 0;
+            document.getElementById('gabriel-mq135_1').innerText = latest.mq135_1 || 0;
+            document.getElementById('gabriel-mq136').innerText   = latest.mq136 || 0;
 
-            const gabriel = {
-                ds18b20: val(row.gabriel_ds18b20 || row[1]),
-                dht22: val(row.gabriel_dht22 || row[2]),
-                mq2: val(row.gabriel_mq2 || row[3]),
-                mq4: val(row.gabriel_mq4 || row[4]),
-                mq7: val(row.gabriel_mq7 || row[5]),
-                mq135: val(row.gabriel_mq135 || row[6]),
-                mq136: val(row.gabriel_mq136 || row[7])
-            };
-
-            const guapo = {
-                ds18b20: val(row.guapo_ds18b20 || row[8]),
-                dht22: val(row.guapo_dht22 || row[9]),
-                mq2: val(row.guapo_mq2 || row[10]),
-                mq4: val(row.guapo_mq4 || row[11]),
-                mq7: val(row.guapo_mq7 || row[12]),
-                mq135: val(row.guapo_mq135 || row[13]),
-                mq136: val(row.guapo_mq136 || row[14])
-            };
-
-            // 1. SET RAW ADC DI MAIN GABRIEL & GUAPO PANELS
-            document.getElementById('gabriel-ds18b20').innerText = gabriel.ds18b20.toFixed(1);
-            document.getElementById('gabriel-dht22').innerText = gabriel.dht22.toFixed(1);
-            document.getElementById('gabriel-mq2').innerText = Math.round(gabriel.mq2);
-            document.getElementById('gabriel-mq4').innerText = Math.round(gabriel.mq4);
-            document.getElementById('gabriel-mq7').innerText = Math.round(gabriel.mq7);
-            document.getElementById('gabriel-mq135').innerText = Math.round(gabriel.mq135);
-            document.getElementById('gabriel-mq136').innerText = Math.round(gabriel.mq136);
-
-            document.getElementById('guapo-ds18b20').innerText = guapo.ds18b20.toFixed(1);
-            document.getElementById('guapo-dht22').innerText = guapo.dht22.toFixed(1);
-            document.getElementById('guapo-mq2').innerText = Math.round(guapo.mq2);
-            document.getElementById('guapo-mq4').innerText = Math.round(guapo.mq4);
-            document.getElementById('guapo-mq7').innerText = Math.round(guapo.mq7);
-            document.getElementById('guapo-mq135').innerText = Math.round(guapo.mq135);
-            document.getElementById('guapo-mq136').innerText = Math.round(guapo.mq136);
-
-            // Hitung PPM tiap sensor
-            const g_ppm2 = adcToPpm('mq2', gabriel.mq2);
-            const g_ppm4 = adcToPpm('mq4', gabriel.mq4);
-            const g_ppm7 = adcToPpm('mq7', gabriel.mq7);
-            const g_ppm135 = adcToPpm('mq135', gabriel.mq135);
-            const g_ppm136 = adcToPpm('mq136', gabriel.mq136);
-
-            const u_ppm2 = adcToPpm('mq2', guapo.mq2);
-            const u_ppm4 = adcToPpm('mq4', guapo.mq4);
-            const u_ppm7 = adcToPpm('mq7', guapo.mq7);
-            const u_ppm135 = adcToPpm('mq135', guapo.mq135);
-            const u_ppm136 = adcToPpm('mq136', guapo.mq136);
-
-            // 2. SET DATA DI SECTION INDIVIDUAL MQ CARDS
-            const setMqCard = (mqKey, gAdc, uAdc, gPpm, uPpm) => {
-                document.getElementById(`sec-gabriel-${mqKey}-ppm`).innerText = gPpm;
-                document.getElementById(`sec-gabriel-${mqKey}-adc`).innerText = `ADC: ${Math.round(gAdc)}`;
-                document.getElementById(`sec-guapo-${mqKey}-ppm`).innerText = uPpm;
-                document.getElementById(`sec-guapo-${mqKey}-adc`).innerText = `ADC: ${Math.round(uAdc)}`;
-
-                // Drift calculation
-                const drift = uAdc !== 0 ? (((gAdc - uAdc) / uAdc) * 100) : 0;
-                const sign = drift > 0 ? '+' : '';
-                const driftEl = document.getElementById(`sec-${mqKey}-drift`);
-                if(driftEl) {
-                    driftEl.innerText = `${sign}${drift.toFixed(2)}%`;
-                    driftEl.className = drift >= 0 ? 'text-warning' : 'text-success';
-                }
-
-                // Update Status Pill
-                const maxPpm = Math.max(gPpm, uPpm);
-                const pillEl = document.getElementById(`${mqKey}-status-pill`);
-                if(pillEl) {
-                    if(maxPpm > 1000) {
-                        pillEl.innerText = "BAHAYA";
-                        pillEl.className = "status-pill danger";
-                    } else if(maxPpm > 400) {
-                        pillEl.innerText = "WASPADA";
-                        pillEl.className = "status-pill warning";
-                    } else {
-                        pillEl.innerText = "AMAN";
-                        pillEl.className = "status-pill safe";
-                    }
-                }
-            };
-
-            setMqCard('mq2', gabriel.mq2, guapo.mq2, g_ppm2, u_ppm2);
-            setMqCard('mq4', gabriel.mq4, guapo.mq4, g_ppm4, u_ppm4);
-            setMqCard('mq7', gabriel.mq7, guapo.mq7, g_ppm7, u_ppm7);
-            setMqCard('mq135', gabriel.mq135, guapo.mq135, g_ppm135, u_ppm135);
-            setMqCard('mq136', gabriel.mq136, guapo.mq136, g_ppm136, u_ppm136);
-
-            // Hitung Per-Sensor Drift % untuk Overview Panel
-            const calcDrift = (v1, v2) => v2 !== 0 ? (((v1 - v2) / v2) * 100) : 0;
-            
-            const drifts = {
-                ds18b20: calcDrift(gabriel.ds18b20, guapo.ds18b20),
-                dht22: calcDrift(gabriel.dht22, guapo.dht22),
-                mq2: calcDrift(gabriel.mq2, guapo.mq2),
-                mq4: calcDrift(gabriel.mq4, guapo.mq4),
-                mq7: calcDrift(gabriel.mq7, guapo.mq7),
-                mq135: calcDrift(gabriel.mq135, guapo.mq135),
-                mq136: calcDrift(gabriel.mq136, guapo.mq136)
-            };
-
-            const formatDriftText = (elId, val) => {
-                const el = document.getElementById(elId);
-                if(!el) return;
-                const sign = val > 0 ? '+' : '';
-                el.innerText = `${sign}${val.toFixed(2)}%`;
-                el.className = val >= 0 ? 'text-warning' : 'text-success';
-            };
-
-            formatDriftText('drift-gabriel-ds18b20', drifts.ds18b20);
-            formatDriftText('drift-gabriel-dht22', drifts.dht22);
-            formatDriftText('drift-gabriel-mq2', drifts.mq2);
-            formatDriftText('drift-gabriel-mq4', drifts.mq4);
-            formatDriftText('drift-gabriel-mq7', drifts.mq7);
-            formatDriftText('drift-gabriel-mq135', drifts.mq135);
-            formatDriftText('drift-gabriel-mq136', drifts.mq136);
-
-            formatDriftText('drift-guapo-ds18b20', -drifts.ds18b20);
-            formatDriftText('drift-guapo-dht22', -drifts.dht22);
-            formatDriftText('drift-guapo-mq2', -drifts.mq2);
-            formatDriftText('drift-guapo-mq4', -drifts.mq4);
-            formatDriftText('drift-guapo-mq7', -drifts.mq7);
-            formatDriftText('drift-guapo-mq135', -drifts.mq135);
-            formatDriftText('drift-guapo-mq136', -drifts.mq136);
-
-            const driftArr = Object.values(drifts);
-            const avgDrift = driftArr.reduce((a, b) => a + b, 0) / driftArr.length;
-            formatDriftText('gabriel-avg-drift', avgDrift);
-            formatDriftText('guapo-avg-drift', -avgDrift);
+            document.getElementById('guapo-mq4_2').innerText     = latest.mq4_2 || 0;
+            document.getElementById('guapo-mq7_2').innerText     = latest.mq7_2 || 0;
+            document.getElementById('guapo-mq135_2').innerText   = latest.mq135_2 || 0;
         }
 
-        // Extract tanggal dari string timestamp
-        function parseRowDate(row) {
-            const rawTime = row.timestamp || row.waktu || row[0] || '';
-            if (!rawTime) return '';
-            
-            let d = new Date(rawTime);
-            if (!isNaN(d.getTime())) {
-                return d.toISOString().split('T')[0];
-            }
-            
-            const match = rawTime.match(/(\d{4}-\d{2}-\d{2})/);
-            if (match) return match[0];
-
-            return '';
+        function switchTab(tab) {
+            currentTab = tab;
+            document.getElementById('tab-btn-mq').classList.toggle('active', tab === 'MQ_sensor');
+            document.getElementById('tab-btn-oven').classList.toggle('active', tab === 'oven_manual');
+            renderCurrentTable();
         }
 
-        // POPULATE FILTER TANGGAL SECARA OTOMATIS
-        function populateDateButtons(rows) {
-            const container = document.getElementById('date-buttons-container');
-            const datesSet = new Set();
-
-            rows.forEach(r => {
-                const dateStr = parseRowDate(r);
-                if (dateStr) datesSet.add(dateStr);
-            });
-
-            let buttonsHtml = `<button class="date-btn ${selectedDateFilter === 'ALL' ? 'active' : ''}" onclick="setTableDateFilter('ALL')">Semua Tanggal</button>`;
-            
-            Array.from(datesSet).sort().reverse().forEach(dateStr => {
-                const isSelected = selectedDateFilter === dateStr;
-                buttonsHtml += `<button class="date-btn ${isSelected ? 'active' : ''}" onclick="setTableDateFilter('${dateStr}')">${dateStr}</button>`;
-            });
-
-            container.innerHTML = buttonsHtml;
-        }
-
-        function setTableDateFilter(dateStr) {
-            selectedDateFilter = dateStr;
-            const buttons = document.querySelectorAll('.date-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            const activeBtn = Array.from(buttons).find(b => b.innerText === dateStr || (dateStr === 'ALL' && b.innerText === 'Semua Tanggal'));
-            if (activeBtn) activeBtn.classList.add('active');
-
-            renderFilteredTable();
-        }
-
-        document.getElementById('custom-date-picker').addEventListener('change', function(e) {
-            if (this.value) {
-                setTableDateFilter(this.value);
-            }
-        });
-
-        // RENDER TABEL TERFILTER BERDASARKAN TANGGAL
-        function renderFilteredTable() {
-            if (!historicalData || historicalData.length === 0) return;
-
-            let filtered = historicalData;
-            if (selectedDateFilter !== 'ALL') {
-                filtered = historicalData.filter(r => {
-                    const rowDate = parseRowDate(r);
-                    return rowDate === selectedDateFilter || (r.timestamp && r.timestamp.includes(selectedDateFilter));
-                });
-            }
-
-            renderTable(filtered);
-        }
-
-        // Render Tabel Google Sheet
-        function renderTable(rows) {
+        function renderCurrentTable() {
+            const thead = document.getElementById('table-head');
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
 
-            if (!rows || rows.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="17" class="text-center" style="padding: 20px;">Tidak ada data untuk tanggal yang dipilih.</td></tr>';
+            if (currentTab === 'MQ_sensor') {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Waktu</th><th>Board</th><th>MQ-2</th><th>MQ4_1</th><th>MQ7_1</th>
+                        <th>MQ135_1</th><th>MQ-136</th><th>MQ4_2</th><th>MQ7_2</th><th>MQ135_2</th>
+                    </tr>`;
+                
+                const rows = historicalData.slice().reverse().slice(0, 20);
+                if (rows.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="10" class="text-center">Belum ada data MQ_sensor</td></tr>';
+                    return;
+                }
+                rows.forEach(r => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${r.timestamp}</td><td>${r.board}</td><td>${r.mq2}</td><td>${r.mq4_1}</td>
+                            <td>${r.mq7_1}</td><td>${r.mq135_1}</td><td>${r.mq136}</td><td>${r.mq4_2}</td>
+                            <td>${r.mq7_2}</td><td>${r.mq135_2}</td>
+                        </tr>`;
+                });
+            } else {
+                thead.innerHTML = `
+                    <tr>
+                        <th>Waktu</th><th>Target Oven (°C)</th><th>MQ-2</th><th>MQ4_1</th><th>MQ7_1</th>
+                        <th>MQ135_1</th><th>MQ-136</th><th>MQ4_2</th><th>MQ7_2</th><th>MQ135_2</th>
+                    </tr>`;
+
+                const rows = ovenData.slice().reverse().slice(0, 20);
+                if (rows.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="10" class="text-center">Belum ada data oven_manual</td></tr>';
+                    return;
+                }
+                rows.forEach(r => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${r.timestamp}</td><td><strong>${r.target_oven_temp}°C</strong></td><td>${r.mq2}</td>
+                            <td>${r.mq4_1}</td><td>${r.mq7_1}</td><td>${r.mq135_1}</td><td>${r.mq136}</td>
+                            <td>${r.mq4_2}</td><td>${r.mq7_2}</td><td>${r.mq135_2}</td>
+                        </tr>`;
+                });
+            }
+        }
+
+        async function saveOvenExperiment() {
+            const tempVal = document.getElementById('input-target-oven-temp').value;
+            if (!tempVal) {
+                alert("Masukkan Target Suhu Oven terlebih dahulu!");
                 return;
             }
 
-            const displayRows = rows.slice().reverse().slice(0, 30);
+            if (historicalData.length === 0) {
+                alert("Belum ada data sensor aktif!");
+                return;
+            }
 
-            displayRows.forEach(row => {
-                const tr = document.createElement('tr');
-                const time = row.timestamp || row.waktu || row[0] || '--';
+            const latest = historicalData[historicalData.length - 1];
 
-                const g_ds = row.gabriel_ds18b20 || row[1] || '--';
-                const g_dht = row.gabriel_dht22 || row[2] || '--';
-                const g_mq2 = row.gabriel_mq2 || row[3] || '--';
-                const g_mq4 = row.gabriel_mq4 || row[4] || '--';
-                const g_mq7 = row.gabriel_mq7 || row[5] || '--';
-                const g_mq135 = row.gabriel_mq135 || row[6] || '--';
-                const g_mq136 = row.gabriel_mq136 || row[7] || '--';
-
-                const u_ds = row.guapo_ds18b20 || row[8] || '--';
-                const u_dht = row.guapo_dht22 || row[9] || '--';
-                const u_mq2 = row.guapo_mq2 || row[10] || '--';
-                const u_mq4 = row.guapo_mq4 || row[11] || '--';
-                const u_mq7 = row.guapo_mq7 || row[12] || '--';
-                const u_mq135 = row.guapo_mq135 || row[13] || '--';
-                const u_mq136 = row.guapo_mq136 || row[14] || '--';
-
-                const avgDrift = row.avg_drift !== undefined ? parseFloat(row.avg_drift).toFixed(2) : '--';
-
-                tr.innerHTML = `
-                    <td>${time}</td>
-                    <td>${g_ds}</td><td>${g_dht}</td><td>${g_mq2}</td><td>${g_mq4}</td><td>${g_mq7}</td><td>${g_mq135}</td><td>${g_mq136}</td>
-                    <td>${u_ds}</td><td>${u_dht}</td><td>${u_mq2}</td><td>${u_mq4}</td><td>${u_mq7}</td><td>${u_mq135}</td><td>${u_mq136}</td>
-                    <td>${avgDrift}%</td>
-                `;
-                tbody.appendChild(tr);
+            const params = new URLSearchParams({
+                action: "save_experiment",
+                target_oven_temp: tempVal,
+                mq2: latest.mq2 || 0,
+                mq4_1: latest.mq4_1 || 0,
+                mq7_1: latest.mq7_1 || 0,
+                mq135_1: latest.mq135_1 || 0,
+                mq136: latest.mq136 || 0,
+                mq4_2: latest.mq4_2 || 0,
+                mq7_2: latest.mq7_2 || 0,
+                mq135_2: latest.mq135_2 || 0
             });
+
+            const res = await fetch(`${APPS_SCRIPT_URL}?${params.toString()}`);
+            if (res.ok) {
+                alert(`Data Suhu Oven ${tempVal}°C Berhasil Disimpan!`);
+                document.getElementById('input-target-oven-temp').value = '';
+                fetchSensorData();
+            }
         }
 
-        // Render Live Chart ke SVG
-        function renderChart(rows) {
-            if (rows.length < 2) return;
-
-            const selectedSensor = document.getElementById('sensor-selector').value;
-            const recent = rows.slice(-10);
-
-            const keyGabriel = 'gabriel_' + selectedSensor;
-            const keyGuapo = 'guapo_' + selectedSensor;
-
-            const gabrielVals = recent.map(r => parseFloat(r[keyGabriel] || r[1] || 0));
-            const guapoVals = recent.map(r => parseFloat(r[keyGuapo] || r[8] || 0));
-
-            const allVals = [...gabrielVals, ...guapoVals];
-            const maxVal = Math.max(...allVals, 1);
-            const minVal = Math.min(...allVals, 0);
-
-            const mapToY = (val) => 180 - ((val - minVal) / (maxVal - minVal || 1)) * 140;
-
-            const buildPath = (vals) => {
-                return vals.map((v, idx) => {
-                    const x = (idx / (vals.length - 1)) * 500;
-                    const y = mapToY(v);
-                    return `${idx === 0 ? 'M' : 'L'}${x},${y}`;
-                }).join(' ');
-            };
-
-            document.getElementById('chart-path-gabriel').setAttribute('d', buildPath(gabrielVals));
-            document.getElementById('chart-path-guapo').setAttribute('d', buildPath(guapoVals));
-
-            const timelineBox = document.getElementById('chart-timeline');
-            timelineBox.innerHTML = '';
-            recent.filter((_, i) => i % 2 === 0).forEach(r => {
-                const span = document.createElement('span');
-                span.innerText = r.timestamp || r.waktu || r[0] || '--';
-                timelineBox.appendChild(span);
-            });
-        }
-
-        function updateSystemStats(rows) {
-            document.getElementById('stat-count-gabriel').innerText = rows.length;
-            document.getElementById('stat-count-guapo').innerText = rows.length;
-            document.getElementById('stat-total-points').innerText = rows.length * 14;
-        }
-
-        document.getElementById('sensor-selector').addEventListener('change', () => renderChart(historicalData));
         document.getElementById('btn-refresh').addEventListener('click', fetchSensorData);
-
         fetchSensorData();
         setInterval(fetchSensorData, 5000);
     </script>

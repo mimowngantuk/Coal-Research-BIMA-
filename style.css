@@ -783,3 +783,27 @@ tbody tr:hover {
     overflow-y: auto;
     overflow-x: auto;
 }
+
+/* Tambahan Styling untuk Tab Input Oven & Filter */
+.date-btn {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    color: #8b949e;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.date-btn:hover {
+    color: #ffffff;
+    border-color: #ffc107;
+}
+
+.date-btn.active {
+    background-color: #ffc107;
+    color: #000000;
+    border-color: #ffc107;
+    font-weight: 700;
+}
